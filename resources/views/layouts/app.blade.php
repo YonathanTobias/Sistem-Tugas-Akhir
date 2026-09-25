@@ -82,14 +82,14 @@
                :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'">
             
             <!-- Brand Logo -->
-            <div class="flex items-center justify-between h-16 px-6 bg-slate-950 border-b border-slate-800 flex-shrink-0">
+            <div class="flex items-center justify-between h-16 px-5 bg-slate-950 border-b border-slate-800 flex-shrink-0">
                 <a href="{{ route('dashboard') }}" class="flex items-center space-x-3">
-                    <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-400 flex items-center justify-center text-white font-bold shadow-md shadow-blue-500/20">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-400 flex items-center justify-center text-white font-bold shadow-md shadow-blue-500/20">
                         <i class="fa-solid fa-graduation-cap text-lg"></i>
                     </div>
                     <div>
-                        <span class="text-base font-bold tracking-tight text-white block leading-tight">Panti Waluya<span class="text-cyan-400 font-extrabold">+</span></span>
-                        <span class="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">SIMTA & Yudisium STIKes</span>
+                        <span class="text-base font-black tracking-tight text-white block leading-tight">SIMTA<span class="text-cyan-400 font-extrabold">+</span></span>
+                        <span class="text-[10px] text-slate-400 uppercase tracking-wider font-semibold block">STIKes Panti Waluya</span>
                     </div>
                 </a>
                 <button @click="sidebarOpen = false" class="md:hidden text-slate-400 hover:text-white">
@@ -98,38 +98,44 @@
             </div>
 
             <!-- Navigation Links (Scrollable Area) -->
-            <div class="flex-1 px-4 py-5 space-y-1.5 overflow-y-auto">
-                <div class="text-[11px] uppercase tracking-wider text-slate-400 font-bold px-3 mb-2">Menu Utama</div>
+            <div class="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+                <div class="text-[10px] uppercase tracking-wider text-slate-400 font-black px-3 pt-1 pb-1.5 flex items-center justify-between">
+                    <span>Menu Utama</span>
+                    <i class="fa-solid fa-layer-group text-[9px]"></i>
+                </div>
                 
-                <a href="{{ route('dashboard') }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all {{ request()->routeIs('dashboard') ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30 font-semibold' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
-                    <i class="fa-solid fa-chart-pie w-5 mr-3 text-center {{ request()->routeIs('dashboard') ? 'text-white' : 'text-slate-400' }}"></i>
+                <a href="{{ route('dashboard') }}" class="flex items-center px-3 py-2.5 text-xs font-semibold rounded-xl transition-all {{ request()->routeIs('dashboard') ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30 font-bold border-l-4 border-cyan-300' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
+                    <i class="fa-solid fa-chart-pie w-5 mr-2.5 text-center {{ request()->routeIs('dashboard') ? 'text-white' : 'text-slate-400' }}"></i>
                     <span>Dashboard</span>
                 </a>
 
-                <a href="{{ route('tugas-akhir.index') }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all {{ request()->routeIs('tugas-akhir.*') ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30 font-semibold' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
-                    <i class="fa-solid fa-book-bookmark w-5 mr-3 text-center {{ request()->routeIs('tugas-akhir.*') ? 'text-white' : 'text-slate-400' }}"></i>
+                <a href="{{ route('tugas-akhir.index') }}" class="flex items-center px-3 py-2.5 text-xs font-semibold rounded-xl transition-all {{ request()->routeIs('tugas-akhir.*') ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30 font-bold border-l-4 border-cyan-300' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
+                    <i class="fa-solid fa-book-bookmark w-5 mr-2.5 text-center {{ request()->routeIs('tugas-akhir.*') ? 'text-white' : 'text-slate-400' }}"></i>
                     <span>Tugas Akhir / Skripsi</span>
                 </a>
 
-                <a href="{{ route('bimbingan.index') }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all {{ request()->routeIs('bimbingan.*') ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30 font-semibold' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
-                    <i class="fa-solid fa-comments w-5 mr-3 text-center {{ request()->routeIs('bimbingan.*') ? 'text-white' : 'text-slate-400' }}"></i>
+                <a href="{{ route('bimbingan.index') }}" class="flex items-center px-3 py-2.5 text-xs font-semibold rounded-xl transition-all {{ request()->routeIs('bimbingan.*') ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30 font-bold border-l-4 border-cyan-300' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
+                    <i class="fa-solid fa-comments w-5 mr-2.5 text-center {{ request()->routeIs('bimbingan.*') ? 'text-white' : 'text-slate-400' }}"></i>
                     <span>Logbook Bimbingan</span>
                 </a>
 
-                <a href="{{ route('sidang.index') }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all {{ request()->routeIs('sidang.*') ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30 font-semibold' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
-                    <i class="fa-solid fa-users-rectangle w-5 mr-3 text-center {{ request()->routeIs('sidang.*') ? 'text-white' : 'text-slate-400' }}"></i>
+                <a href="{{ route('sidang.index') }}" class="flex items-center px-3 py-2.5 text-xs font-semibold rounded-xl transition-all {{ request()->routeIs('sidang.*') ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30 font-bold border-l-4 border-cyan-300' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
+                    <i class="fa-solid fa-users-rectangle w-5 mr-2.5 text-center {{ request()->routeIs('sidang.*') ? 'text-white' : 'text-slate-400' }}"></i>
                     <span>Seminar & Sidang</span>
                 </a>
 
-                <div class="pt-4 text-[11px] uppercase tracking-wider text-slate-400 font-bold px-3 mb-2">Kelulusan</div>
+                <div class="pt-3 text-[10px] uppercase tracking-wider text-slate-400 font-black px-3 pb-1.5 flex items-center justify-between">
+                    <span>Kelulusan</span>
+                    <i class="fa-solid fa-certificate text-[9px]"></i>
+                </div>
 
-                <a href="{{ route('yudisium.index') }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all {{ request()->routeIs('yudisium.*') ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30 font-semibold' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
-                    <i class="fa-solid fa-award w-5 mr-3 text-center {{ request()->routeIs('yudisium.*') ? 'text-white' : 'text-slate-400' }}"></i>
+                <a href="{{ route('yudisium.index') }}" class="flex items-center px-3 py-2.5 text-xs font-semibold rounded-xl transition-all {{ request()->routeIs('yudisium.*') ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30 font-bold border-l-4 border-cyan-300' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
+                    <i class="fa-solid fa-award w-5 mr-2.5 text-center {{ request()->routeIs('yudisium.*') ? 'text-white' : 'text-slate-400' }}"></i>
                     <span>Pendaftaran Yudisium</span>
                 </a>
 
-                <a href="{{ route('pengumuman.index') }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all {{ request()->routeIs('pengumuman.*') ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30 font-semibold' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
-                    <i class="fa-solid fa-bullhorn w-5 mr-3 text-center {{ request()->routeIs('pengumuman.*') ? 'text-white' : 'text-slate-400' }}"></i>
+                <a href="{{ route('pengumuman.index') }}" class="flex items-center px-3 py-2.5 text-xs font-semibold rounded-xl transition-all {{ request()->routeIs('pengumuman.*') ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30 font-bold border-l-4 border-cyan-300' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
+                    <i class="fa-solid fa-bullhorn w-5 mr-2.5 text-center {{ request()->routeIs('pengumuman.*') ? 'text-white' : 'text-slate-400' }}"></i>
                     <span>Pengumuman</span>
                 </a>
 
@@ -224,52 +230,66 @@
         <!-- MAIN CONTENT AREA -->
         <div class="flex flex-col flex-1 min-w-0 overflow-hidden">
             
-            <!-- Topbar -->
-            <header class="h-16 bg-white border-b border-slate-200/80 flex items-center justify-between px-4 sm:px-6 z-10">
-                <div class="flex items-center gap-3">
-                    <button @click="sidebarOpen = true" class="text-slate-500 hover:text-slate-700 md:hidden p-2 rounded-lg">
-                        <i class="fa-solid fa-bars text-lg"></i>
+            <!-- Topbar (ATM JTI Polinema Style) -->
+            <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-4 sm:px-6 z-10 shadow-xs">
+                
+                <!-- Left: Mobile Toggle & Breadcrumb Navigation -->
+                <div class="flex items-center gap-3 min-w-0">
+                    <button @click="sidebarOpen = true" class="text-slate-500 hover:text-slate-700 md:hidden p-2 rounded-lg bg-slate-100">
+                        <i class="fa-solid fa-bars text-base"></i>
                     </button>
-                    <h1 class="text-lg font-bold text-slate-800">@yield('title')</h1>
+
+                    <div>
+                        <!-- Breadcrumbs -->
+                        <div class="flex items-center gap-1.5 text-[11px] text-slate-400 font-medium">
+                            <a href="{{ route('dashboard') }}" class="hover:text-blue-600 transition flex items-center gap-1">
+                                <i class="fa-solid fa-house text-[10px]"></i> Beranda
+                            </a>
+                            <span>/</span>
+                            <span class="text-slate-700 font-bold truncate">@yield('title', 'Portal')</span>
+                        </div>
+                        <h1 class="text-base sm:text-lg font-black text-slate-900 leading-tight truncate">@yield('title', 'Dashboard')</h1>
+                    </div>
                 </div>
 
+                <!-- Right: Scope, Date, User Badge, Fast Logout -->
                 <div class="flex items-center gap-3">
                     
                     @if(auth()->user()->isAdminIT())
                     <!-- Quick Prodi Scope Switcher Dropdown (Super Admin IT) -->
-                    <form action="{{ route('master.prodi.switch') }}" method="POST" class="hidden sm:flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs">
+                    <form action="{{ route('master.prodi.switch') }}" method="POST" class="hidden md:flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs">
                         @csrf
-                        <span class="text-slate-400 font-bold px-2 flex items-center gap-1">
-                            <i class="fa-solid fa-layer-group text-blue-500"></i> Scope Prodi:
+                        <span class="text-slate-500 font-bold px-2 flex items-center gap-1">
+                            <i class="fa-solid fa-layer-group text-blue-600"></i> Scope:
                         </span>
-                        <select name="prodi_id" onchange="this.form.submit()" class="bg-white border-0 py-1 px-2.5 rounded-lg font-bold text-slate-800 text-xs focus:ring-1 focus:ring-blue-500 cursor-pointer shadow-sm">
-                            <option value="all" {{ !session('active_prodi_id') ? 'selected' : '' }}>🏢 Semua Program Studi (Global)</option>
-                            <option value="1" {{ session('active_prodi_id') == 1 ? 'selected' : '' }}>🩺 S1 Keperawatan (KEP)</option>
-                            <option value="2" {{ session('active_prodi_id') == 2 ? 'selected' : '' }}>💊 S1 Farmasi (FAR)</option>
-                            <option value="3" {{ session('active_prodi_id') == 3 ? 'selected' : '' }}>📋 D4 Manajemen Informasi Kesehatan (MIK)</option>
+                        <select name="prodi_id" onchange="this.form.submit()" class="bg-white border-0 py-1 px-2.5 rounded-lg font-bold text-slate-800 text-xs focus:ring-1 focus:ring-blue-500 cursor-pointer shadow-xs">
+                            <option value="all" {{ !session('active_prodi_id') ? 'selected' : '' }}>🏢 Semua Prodi (Global)</option>
+                            <option value="1" {{ session('active_prodi_id') == 1 ? 'selected' : '' }}>🩺 S1 Keperawatan</option>
+                            <option value="2" {{ session('active_prodi_id') == 2 ? 'selected' : '' }}>💊 S1 Farmasi</option>
+                            <option value="3" {{ session('active_prodi_id') == 3 ? 'selected' : '' }}>📋 D4 Rekam Medis / MIK</option>
                         </select>
                     </form>
                     @endif
 
-                    <div class="hidden md:flex items-center text-xs font-semibold px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">
-                        <i class="fa-solid fa-clock mr-1.5 text-slate-400"></i>
-                        {{ now()->translatedFormat('d M Y') }}
+                    <div class="hidden sm:flex items-center text-xs font-semibold px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">
+                        <i class="fa-solid fa-calendar-day mr-1.5 text-slate-400"></i>
+                        {{ now()->translatedFormat('d F Y') }}
                     </div>
 
                     <div class="h-6 w-px bg-slate-200 hidden sm:block"></div>
 
-                    <!-- User Role Badge & Logout Button in Topbar -->
-                    <div class="flex items-center gap-2.5">
-                        <span class="px-2.5 py-1 text-xs font-bold rounded-lg uppercase tracking-wide
-                            {{ auth()->user()->isAdminIT() ? 'bg-rose-100 text-rose-700' : '' }}
-                            {{ auth()->user()->isAdminProdi() ? 'bg-indigo-100 text-indigo-700' : '' }}
-                            {{ auth()->user()->isDosen() ? 'bg-sky-100 text-sky-700' : '' }}
-                            {{ auth()->user()->isMahasiswa() ? 'bg-emerald-100 text-emerald-700' : '' }}
+                    <!-- Role Badge & Logout Button -->
+                    <div class="flex items-center gap-2">
+                        <span class="px-2.5 py-1 text-xs font-extrabold rounded-lg uppercase tracking-wide
+                            {{ auth()->user()->isAdminIT() ? 'bg-rose-100 text-rose-700 border border-rose-200' : '' }}
+                            {{ auth()->user()->isAdminProdi() ? 'bg-indigo-100 text-indigo-700 border border-indigo-200' : '' }}
+                            {{ auth()->user()->isDosen() ? 'bg-sky-100 text-sky-700 border border-sky-200' : '' }}
+                            {{ auth()->user()->isMahasiswa() ? 'bg-emerald-100 text-emerald-700 border border-emerald-200' : '' }}
                         ">
                             @if(auth()->user()->isAdminIT())
-                                👑 Super Admin IT
+                                👑 IT Admin
                             @elseif(auth()->user()->isAdminProdi())
-                                🏢 Admin Prodi
+                                🏢 Prodi {{ auth()->user()->prodi->kode_prodi ?? '' }}
                             @elseif(auth()->user()->isDosen())
                                 🩺 Dosen
                             @elseif(auth()->user()->isMahasiswa())
@@ -279,7 +299,7 @@
 
                         <form action="{{ route('logout') }}" method="POST" class="inline">
                             @csrf
-                            <button type="submit" title="Keluar / Logout" class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-rose-600 bg-rose-50 hover:bg-rose-600 hover:text-white border border-rose-200 hover:border-rose-600 rounded-xl transition shadow-sm">
+                            <button type="submit" title="Keluar / Logout" class="flex items-center gap-1 px-3 py-1.5 text-xs font-bold text-rose-600 bg-rose-50 hover:bg-rose-600 hover:text-white border border-rose-200 hover:border-rose-600 rounded-xl transition shadow-xs">
                                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                                 <span class="hidden sm:inline">Logout</span>
                             </button>

@@ -127,7 +127,7 @@
                     <span class="px-3 py-1 bg-slate-50 border border-slate-300 text-slate-600 font-mono text-[9px] rounded">DITANDATANGANI SECARA ELEKTRONIK</span>
                 </div>
                 <p class="font-bold underline">{{ $ta->mahasiswa->prodi->kaprodi_nama ?? 'Ns. Felisitas A. Sri S., M.Kep.' }}</p>
-                <p class="text-[10px] text-slate-500">NIDN. {{ $ta->mahasiswa->prodi->kaprodi_nidn ?? '0712048001' }}</p>
+                <p class="text-[10px] text-slate-500">NIDN/NIP: {{ $ta->mahasiswa->prodi->kaprodi_nip ?? '-' }}</p>
             </div>
             <div class="text-center">
                 <p>Malang, {{ now()->translatedFormat('d F Y') }}</p>
