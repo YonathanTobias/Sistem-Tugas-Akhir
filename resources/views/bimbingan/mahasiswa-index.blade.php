@@ -15,7 +15,7 @@
             <a href="{{ route('bimbingan.cetak-kartu', $ta->id) }}" target="_blank" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs transition">
                 <i class="fa-solid fa-print mr-1.5"></i> Cetak Kartu Bimbingan
             </a>
-            <a href="{{ route('bimbingan.create') }}" class="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-xs shadow-lg shadow-emerald-600/30 transition">
+            <a href="{{ route('bimbingan.create') }}" class="px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-xs shadow-lg shadow-blue-600/30 transition">
                 <i class="fa-solid fa-plus-circle mr-1.5"></i> Catat Bimbingan Baru
             </a>
         </div>
@@ -23,7 +23,7 @@
 
     <!-- Summary Bar -->
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-between">
+        <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-between hover:shadow-md transition">
             <div>
                 <span class="text-xs font-bold text-slate-400 uppercase">Total Sesi Bimbingan</span>
                 <p class="text-xl font-extrabold text-slate-800 mt-0.5">{{ $bimbingans->count() }} Pertemuan</p>
@@ -33,7 +33,7 @@
             </div>
         </div>
 
-        <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-between">
+        <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-between hover:shadow-md transition">
             <div>
                 <span class="text-xs font-bold text-slate-400 uppercase">Status ACC Dosen</span>
                 <p class="text-xl font-extrabold text-emerald-600 mt-0.5">{{ $totalAcc }} Sesi Di-ACC</p>
@@ -43,7 +43,7 @@
             </div>
         </div>
 
-        <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-between">
+        <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-between hover:shadow-md transition">
             <div>
                 <span class="text-xs font-bold text-slate-400 uppercase">Perlu Revisi</span>
                 <p class="text-xl font-extrabold text-amber-600 mt-0.5">{{ $bimbingans->where('status', 'revisi')->count() }} Catatan</p>
@@ -61,7 +61,7 @@
             
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-3">
                 <div class="flex items-center gap-3">
-                    <span class="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center font-bold text-xs text-slate-700">
+                    <span class="w-9 h-9 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center font-bold text-xs">
                         {{ $b->bab }}
                     </span>
                     <div>
@@ -88,7 +88,7 @@
                     <p class="text-slate-700 whitespace-pre-line leading-relaxed">{{ $b->uraian_mahasiswa }}</p>
                     @if($b->file_draft)
                     <div class="pt-2">
-                        <a href="{{ asset('storage/' . $b->file_draft) }}" target="_blank" class="inline-flex items-center text-emerald-600 font-bold hover:underline">
+                        <a href="{{ asset('storage/' . $b->file_draft) }}" target="_blank" class="inline-flex items-center text-blue-600 font-bold hover:underline">
                             <i class="fa-solid fa-paperclip mr-1"></i> File Draft Yang Diunggah
                         </a>
                     </div>
@@ -102,7 +102,7 @@
                     <p class="text-slate-800 whitespace-pre-line leading-relaxed">{{ $b->catatan_dosen }}</p>
                     @if($b->file_revisi_dosen)
                     <div class="pt-2">
-                        <a href="{{ asset('storage/' . $b->file_revisi_dosen) }}" target="_blank" class="inline-flex items-center text-sky-600 font-bold hover:underline">
+                        <a href="{{ asset('storage/' . $b->file_revisi_dosen) }}" target="_blank" class="inline-flex items-center text-blue-600 font-bold hover:underline">
                             <i class="fa-solid fa-file-arrow-down mr-1"></i> File Koreksi Dosen
                         </a>
                     </div>
@@ -119,7 +119,7 @@
             <i class="fa-solid fa-book-open-reader text-4xl text-slate-300 mb-3"></i>
             <h3 class="font-bold text-slate-800 text-sm">Belum Ada Riwayat Bimbingan</h3>
             <p class="text-xs text-slate-500 max-w-sm mx-auto mt-1 mb-4">Setiap kali Anda selesai konsultasi dengan pembimbing, catat uraian pembahasannya di sini.</p>
-            <a href="{{ route('bimbingan.create') }}" class="px-5 py-2.5 bg-emerald-600 text-white font-bold rounded-xl text-xs">
+            <a href="{{ route('bimbingan.create') }}" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-xs shadow-md shadow-blue-600/30 transition">
                 Tambah Catatan Bimbingan
             </a>
         </div>

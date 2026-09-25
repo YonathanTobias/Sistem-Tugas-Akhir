@@ -10,16 +10,16 @@
         
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-5">
             <div>
-                <span class="px-3 py-1 rounded-xl text-xs font-black uppercase tracking-wide {{ $sidang->jenis === 'sempro' ? 'bg-sky-100 text-sky-700' : 'bg-emerald-100 text-emerald-700' }}">
+                <span class="px-3 py-1 rounded-xl text-xs font-black uppercase tracking-wide {{ $sidang->jenis === 'sempro' ? 'bg-blue-100 text-blue-700' : 'bg-indigo-100 text-indigo-700' }}">
                     {{ $sidang->jenis === 'sempro' ? 'Seminar Proposal' : 'Sidang Akhir Skripsi' }}
                 </span>
                 <h2 class="text-xl font-black text-slate-800 mt-2">{{ $sidang->tugasAkhir->mahasiswa->nama_lengkap }} ({{ $sidang->tugasAkhir->mahasiswa->nim }})</h2>
-                <p class="text-xs text-slate-500">Prodi: {{ $sidang->tugasAkhir->mahasiswa->prodi->nama_prodi ?? 'TI' }}</p>
+                <p class="text-xs text-slate-500">Prodi: <span class="font-semibold text-blue-700">{{ $sidang->tugasAkhir->mahasiswa->prodi->nama_prodi ?? 'Prodi' }}</span></p>
             </div>
             <div>
                 <span class="px-3.5 py-1.5 rounded-xl text-xs font-black uppercase tracking-wide
                     {{ $sidang->status === 'lulus' ? 'bg-emerald-100 text-emerald-700' : '' }}
-                    {{ $sidang->status === 'dijadwalkan' ? 'bg-sky-100 text-sky-700' : '' }}
+                    {{ $sidang->status === 'dijadwalkan' ? 'bg-blue-100 text-blue-700' : '' }}
                     {{ $sidang->status === 'menunggu_jadwal' ? 'bg-amber-100 text-amber-700' : '' }}
                     {{ $sidang->status === 'revisi' ? 'bg-orange-100 text-orange-700' : '' }}
                 ">
@@ -102,12 +102,12 @@
         <div class="border-t border-slate-200 pt-6 space-y-4">
             <h3 class="font-extrabold text-sm text-slate-900 uppercase tracking-wider">Form Penilaian Ujian Dosen</h3>
             
-            <form action="{{ route('sidang.nilai', $sidang->id) }}" method="POST" class="bg-sky-50/50 p-5 rounded-2xl border border-sky-100 space-y-4">
+            <form action="{{ route('sidang.nilai', $sidang->id) }}" method="POST" class="bg-blue-50/50 p-5 rounded-2xl border border-blue-100 space-y-4">
                 @csrf
                 <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
                     <div>
                         <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Peran Anda</label>
-                        <select name="peran" required class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-bold">
+                        <select name="peran" required class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-bold focus:outline-none focus:border-blue-500">
                             <option value="penguji1" {{ ($existingScore && $existingScore->peran === 'penguji1') ? 'selected' : '' }}>Penguji 1</option>
                             <option value="penguji2" {{ ($existingScore && $existingScore->peran === 'penguji2') ? 'selected' : '' }}>Penguji 2</option>
                             <option value="pembimbing1" {{ ($existingScore && $existingScore->peran === 'pembimbing1') ? 'selected' : '' }}>Pembimbing 1</option>
@@ -118,30 +118,30 @@
                     <div>
                         <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Presentasi (0-100)</label>
                         <input type="number" step="0.1" name="nilai_presentasi" value="{{ old('nilai_presentasi', $existingScore->nilai_presentasi ?? '') }}" required placeholder="Bobot 25%"
-                            class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs">
+                            class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-blue-500">
                     </div>
 
                     <div>
                         <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Materi Skripsi (0-100)</label>
                         <input type="number" step="0.1" name="nilai_materi" value="{{ old('nilai_materi', $existingScore->nilai_materi ?? '') }}" required placeholder="Bobot 35%"
-                            class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs">
+                            class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-blue-500">
                     </div>
 
                     <div>
                         <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Tanya Jawab (0-100)</label>
                         <input type="number" step="0.1" name="nilai_tanya_jawab" value="{{ old('nilai_tanya_jawab', $existingScore->nilai_tanya_jawab ?? '') }}" required placeholder="Bobot 40%"
-                            class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs">
+                            class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-blue-500">
                     </div>
                 </div>
 
                 <div>
                     <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Catatan Koreksi / Evaluasi</label>
                     <input type="text" name="catatan" value="{{ old('catatan', $existingScore->catatan ?? '') }}" placeholder="Komentar atau saran perbaikan untuk mahasiswa..."
-                        class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs">
+                        class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-blue-500">
                 </div>
 
                 <div class="text-right pt-2">
-                    <button type="submit" class="px-5 py-2.5 bg-sky-600 hover:bg-sky-500 text-white font-bold rounded-xl text-xs shadow-md transition">
+                    <button type="submit" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-xs shadow-md shadow-blue-600/30 transition">
                         <i class="fa-solid fa-floppy-disk mr-1.5"></i> Simpan Nilai Sidang
                     </button>
                 </div>
@@ -165,28 +165,28 @@
                         <div>
                             <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Tanggal Sidang <span class="text-rose-500">*</span></label>
                             <input type="date" name="tgl_sidang" value="{{ old('tgl_sidang', $sidang->tgl_sidang ? $sidang->tgl_sidang->format('Y-m-d') : '') }}" required
-                                class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs">
+                                class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-blue-500">
                         </div>
 
                         <div>
                             <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Jam Mulai - Selesai <span class="text-rose-500">*</span></label>
                             <div class="flex gap-2">
-                                <input type="time" name="jam_mulai" value="{{ old('jam_mulai', $sidang->jam_mulai) }}" required class="w-1/2 px-2 py-2 bg-white border border-slate-200 rounded-xl text-xs">
-                                <input type="time" name="jam_selesai" value="{{ old('jam_selesai', $sidang->jam_selesai) }}" required class="w-1/2 px-2 py-2 bg-white border border-slate-200 rounded-xl text-xs">
+                                <input type="time" name="jam_mulai" value="{{ old('jam_mulai', $sidang->jam_mulai) }}" required class="w-1/2 px-2 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-blue-500">
+                                <input type="time" name="jam_selesai" value="{{ old('jam_selesai', $sidang->jam_selesai) }}" required class="w-1/2 px-2 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-blue-500">
                             </div>
                         </div>
 
                         <div>
                             <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Ruangan <span class="text-rose-500">*</span></label>
-                            <input type="text" name="ruangan" value="{{ old('ruangan', $sidang->ruangan) }}" required placeholder="misal: Lab AI Gd. B Lt. 2"
-                                class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs">
+                            <input type="text" name="ruangan" value="{{ old('ruangan', $sidang->ruangan) }}" required placeholder="misal: Ruang Sidang Lt. 2 STIKes"
+                                class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-blue-500">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         <div>
                             <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Dosen Penguji 1 <span class="text-rose-500">*</span></label>
-                            <select name="penguji1_id" required class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs">
+                            <select name="penguji1_id" required class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-blue-500">
                                 <option value="">-- Pilih Penguji 1 --</option>
                                 @foreach($dosens as $d)
                                 <option value="{{ $d->id }}" {{ $sidang->penguji1_id == $d->id ? 'selected' : '' }}>{{ $d->nama_lengkap }}</option>
@@ -196,7 +196,7 @@
 
                         <div>
                             <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Dosen Penguji 2</label>
-                            <select name="penguji2_id" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs">
+                            <select name="penguji2_id" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-blue-500">
                                 <option value="">-- Pilih Penguji 2 (Opsional) --</option>
                                 @foreach($dosens as $d)
                                 <option value="{{ $d->id }}" {{ $sidang->penguji2_id == $d->id ? 'selected' : '' }}>{{ $d->nama_lengkap }}</option>
@@ -206,7 +206,7 @@
 
                         <div>
                             <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Status Sidang</label>
-                            <select name="status" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-bold">
+                            <select name="status" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-bold focus:outline-none focus:border-blue-500">
                                 <option value="menunggu_jadwal" {{ $sidang->status === 'menunggu_jadwal' ? 'selected' : '' }}>Menunggu Jadwal</option>
                                 <option value="dijadwalkan" {{ $sidang->status === 'dijadwalkan' ? 'selected' : '' }}>Dijadwalkan</option>
                                 <option value="selesai" {{ $sidang->status === 'selesai' ? 'selected' : '' }}>Selesai Ujian</option>
@@ -218,7 +218,7 @@
                     </div>
 
                     <div class="text-right">
-                        <button type="submit" class="px-5 py-2 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl text-xs transition">
+                        <button type="submit" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-xs shadow-md shadow-blue-600/30 transition">
                             Simpan Perubahan Jadwal
                         </button>
                     </div>
@@ -226,8 +226,8 @@
             </div>
 
             <!-- Form Berita Acara & Kelulusan -->
-            <div class="bg-emerald-50/50 p-5 rounded-2xl border border-emerald-200 space-y-4">
-                <h4 class="font-extrabold text-xs uppercase tracking-wider text-emerald-900">2. Berita Acara & Finalisasi Hasil Sidang</h4>
+            <div class="bg-blue-50/50 p-5 rounded-2xl border border-blue-200 space-y-4">
+                <h4 class="font-extrabold text-xs uppercase tracking-wider text-blue-950">2. Berita Acara & Finalisasi Hasil Sidang</h4>
                 
                 <form action="{{ route('sidang.finalize', $sidang->id) }}" method="POST" class="space-y-4">
                     @csrf
@@ -235,7 +235,7 @@
 
                     <div>
                         <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Keputusan Akhir Sidang <span class="text-rose-500">*</span></label>
-                        <select name="status" required class="w-full px-3 py-2 bg-white border border-emerald-300 rounded-xl text-xs font-bold text-emerald-900">
+                        <select name="status" required class="w-full px-3 py-2 bg-white border border-blue-300 rounded-xl text-xs font-bold text-blue-900 focus:outline-none focus:border-blue-500">
                             <option value="lulus" {{ $sidang->status === 'lulus' ? 'selected' : '' }}>🎉 LULUS SIDANG</option>
                             <option value="revisi" {{ $sidang->status === 'revisi' ? 'selected' : '' }}>⚠️ LULUS DENGAN REVISI</option>
                             <option value="tidak_lulus" {{ $sidang->status === 'tidak_lulus' ? 'selected' : '' }}>❌ TIDAK LULUS (Ujian Ulang)</option>
@@ -245,17 +245,17 @@
                     <div>
                         <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Berita Acara Sidang / Ringkasan Keputusan <span class="text-rose-500">*</span></label>
                         <textarea name="berita_acara" rows="3" required placeholder="Berdasarkan hasil ujian seminar/sidang, dewan penguji memutuskan bahwa..."
-                            class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs">{{ old('berita_acara', $sidang->berita_acara) }}</textarea>
+                            class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-blue-500">{{ old('berita_acara', $sidang->berita_acara) }}</textarea>
                     </div>
 
                     <div>
                         <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Catatan Revisi untuk Mahasiswa</label>
                         <textarea name="catatan_revisi" rows="2" placeholder="Daftar revisi wajib sebelum cetak dokumen..."
-                            class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs">{{ old('catatan_revisi', $sidang->catatan_revisi) }}</textarea>
+                            class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-blue-500">{{ old('catatan_revisi', $sidang->catatan_revisi) }}</textarea>
                     </div>
 
                     <div class="text-right">
-                        <button type="submit" class="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-xs shadow-md shadow-emerald-600/30 transition">
+                        <button type="submit" class="px-6 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-xs shadow-md shadow-blue-600/30 transition">
                             <i class="fa-solid fa-stamp mr-1.5"></i> Finalisasi Hasil Sidang
                         </button>
                     </div>

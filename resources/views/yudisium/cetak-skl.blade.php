@@ -16,10 +16,10 @@
     <div class="no-print max-w-4xl mx-auto mb-4 flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
         <span class="text-xs font-sans text-slate-600 font-semibold">Dokumen Resmi Surat Keterangan Lulus (SKL) Ber-QR Code.</span>
         <div class="flex gap-2">
-            <button onclick="window.print()" class="px-4 py-2 bg-emerald-600 text-white font-sans text-xs font-bold rounded-xl shadow hover:bg-emerald-500">
+            <button onclick="window.print()" class="px-4 py-2 bg-blue-600 text-white font-sans text-xs font-bold rounded-xl shadow hover:bg-blue-500 transition">
                 🖨️ Cetak / Simpan PDF
             </button>
-            <button onclick="window.close()" class="px-4 py-2 bg-slate-200 text-slate-700 font-sans text-xs font-bold rounded-xl hover:bg-slate-300">
+            <button onclick="window.close()" class="px-4 py-2 bg-slate-200 text-slate-700 font-sans text-xs font-bold rounded-xl hover:bg-slate-300 transition">
                 Tutup
             </button>
         </div>
@@ -36,7 +36,7 @@
                 <div class="text-center w-full">
                     <h1 class="font-bold text-xs uppercase tracking-wider text-slate-700">YAYASAN KERUKUNAN SANTO CAROLUS BORROMEUS</h1>
                     <h2 class="font-extrabold text-xl uppercase tracking-wide text-slate-900">SEKOLAH TINGGI ILMU KESEHATAN PANTI WALUYA MALANG</h2>
-                    <h3 class="font-bold text-xs uppercase text-emerald-800 tracking-wide">PROGRAM STUDI {{ strtoupper($pendaftaran->mahasiswa->prodi->nama_prodi ?? 'S1 KEPERAWATAN') }}</h3>
+                    <h3 class="font-bold text-xs uppercase text-blue-900 tracking-wide">PROGRAM STUDI {{ strtoupper($pendaftaran->mahasiswa->prodi->nama_prodi ?? 'S1 KEPERAWATAN') }}</h3>
                     <p class="text-[10px] text-slate-600 mt-1 italic">Jl. Yulius Usman No. 62 Malang, Jawa Timur &bull; Telp. (0341) 369003 &bull; Website: www.stikespantiwaluya.ac.id</p>
                 </div>
             </div>
@@ -70,7 +70,7 @@
                     <tr>
                         <td class="py-1.5 font-semibold text-slate-700">Gelar Akademik yang Diberikan</td>
                         <td>:</td>
-                        <td class="font-bold text-emerald-900">{{ $pendaftaran->mahasiswa->prodi->gelar_lulusan ?? 'Sarjana Keperawatan (S.Kep.)' }}</td>
+                        <td class="font-bold text-blue-900">{{ $pendaftaran->mahasiswa->prodi->gelar_lulusan ?? 'Sarjana Keperawatan (S.Kep.)' }}</td>
                     </tr>
                     <tr>
                         <td class="py-1.5 font-semibold text-slate-700">Tanggal Kelulusan Resmi</td>
@@ -99,34 +99,29 @@
                 </p>
 
                 <p class="text-justify leading-relaxed">
-                    Surat Keterangan Lulus ini berlaku sebagai bukti kelulusan yang sah sementara menunggu penerbitan Ijazah, Transkrip Akademik, dan Sertifikat Profesi / STR resmi.
+                    Surat Keterangan Lulus ini berlaku sebagai bukti kelulusan yang sah sampai dengan diterbitkannya Ijazah dan Transkrip Akademik resmi oleh institusi.
                 </p>
             </div>
 
-            <!-- Signatures and QR Code Validation -->
-            <div class="mt-12 pt-6 grid grid-cols-2 gap-8 font-sans items-end">
-                
-                <!-- QR Code Verification Box -->
-                <div class="flex items-center gap-4 p-3 bg-slate-50 border border-slate-200 rounded-xl">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&data={{ urlencode($verificationUrl) }}" alt="QR Code Verifikasi" class="w-24 h-24 border border-slate-300 p-1 bg-white rounded-lg">
-                    <div class="text-[10px] space-y-1 text-slate-600">
-                        <strong class="font-bold text-slate-900 block uppercase">Verifikasi Dokumen Digital</strong>
-                        <p>Pindai (scan) QR Code ini untuk memverifikasi keaslian dan validitas SKL pada pangkalan data STIKes Panti Waluya.</p>
-                        <span class="font-mono text-[9px] text-slate-400 block truncate">Token: {{ substr($pendaftaran->skl_token, 0, 16) }}...</span>
+            <!-- Signature & QR Section -->
+            <div class="grid grid-cols-2 gap-8 font-sans text-xs pt-12">
+                <div class="space-y-2 text-center">
+                    <p class="text-[10px] text-slate-500 uppercase font-semibold">Pindai QR untuk Verifikasi Keaslian:</p>
+                    <div class="p-2 border border-slate-300 inline-block bg-slate-50 rounded-xl">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&data={{ urlencode(route('verify.skl', $pendaftaran->skl_token)) }}" alt="QR Code Verifikasi" class="w-24 h-24 mx-auto">
                     </div>
+                    <p class="font-mono text-[9px] text-slate-400">Token: {{ substr($pendaftaran->skl_token, 0, 16) }}...</p>
                 </div>
 
-                <!-- Dean / Ketua Signature -->
-                <div class="text-center space-y-1">
-                    <p class="text-xs text-slate-600">Malang, {{ $pendaftaran->tanggal_sk ? $pendaftaran->tanggal_sk->translatedFormat('d F Y') : now()->translatedFormat('d F Y') }}</p>
-                    <p class="text-xs font-bold uppercase">Ketua STIKes Panti Waluya Malang,</p>
-                    <div class="h-16 flex items-center justify-center">
-                        <span class="px-3 py-1 bg-emerald-50 border border-emerald-300 text-emerald-800 font-mono text-[10px] rounded font-bold uppercase tracking-wider">DITANDATANGANI SECARA ELEKTRONIK</span>
+                <div class="text-center">
+                    <p>Malang, {{ $pendaftaran->tanggal_sk ? $pendaftaran->tanggal_sk->translatedFormat('d F Y') : now()->translatedFormat('d F Y') }}</p>
+                    <p class="font-bold text-slate-800 mt-1">Ketua STIKes Panti Waluya Malang,</p>
+                    <div class="h-20 flex items-center justify-center">
+                        <span class="px-3 py-1 bg-blue-50 border border-blue-300 text-blue-900 font-mono text-[9px] rounded font-bold">TERVALIDASI SECARA DIGITAL</span>
                     </div>
-                    <p class="font-bold text-xs underline">Wisoedhanie Widi Anugrahanti, S.KM., M.Kes.</p>
-                    <p class="text-[10px] text-slate-500">NIDN. 0718057701</p>
+                    <p class="font-bold text-sm underline text-slate-900">Dr. apt. Irene Ratridewi, M.Farm.</p>
+                    <p class="text-[10px] text-slate-500">NIDN. 0715097501</p>
                 </div>
-
             </div>
 
         </div>

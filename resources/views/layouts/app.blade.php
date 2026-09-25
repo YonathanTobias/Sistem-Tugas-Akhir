@@ -21,18 +21,29 @@
                     },
                     colors: {
                         brand: {
-                            50: '#f0fdf4',
-                            100: '#dcfce7',
-                            500: '#22c55e',
-                            600: '#16a34a',
-                            700: '#15803d',
-                            800: '#166534',
-                            900: '#14532d',
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#1d4ed8',
+                            700: '#1e40af',
+                            800: '#1e3a8a',
+                            900: '#172554',
+                            950: '#0a1532',
+                        },
+                        clinical: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
                         },
                         navy: {
-                            800: '#1e293b',
-                            900: '#0f172a',
-                            950: '#020617',
+                            800: '#0f1f38',
+                            900: '#0b162c',
+                            950: '#060d1d',
                         }
                     }
                 }
@@ -65,11 +76,11 @@
             <!-- Brand Logo -->
             <div class="flex items-center justify-between h-16 px-6 bg-slate-950 border-b border-slate-800 flex-shrink-0">
                 <a href="{{ route('dashboard') }}" class="flex items-center space-x-3">
-                    <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white font-bold shadow-md shadow-emerald-500/20">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-400 flex items-center justify-center text-white font-bold shadow-md shadow-blue-500/20">
                         <i class="fa-solid fa-graduation-cap text-lg"></i>
                     </div>
                     <div>
-                        <span class="text-base font-bold tracking-tight text-white block leading-tight">Panti Waluya<span class="text-emerald-400 font-extrabold">+</span></span>
+                        <span class="text-base font-bold tracking-tight text-white block leading-tight">Panti Waluya<span class="text-cyan-400 font-extrabold">+</span></span>
                         <span class="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">SIMTA & Yudisium STIKes</span>
                     </div>
                 </a>
@@ -82,34 +93,34 @@
             <div class="flex-1 px-4 py-5 space-y-1.5 overflow-y-auto">
                 <div class="text-[11px] uppercase tracking-wider text-slate-400 font-bold px-3 mb-2">Menu Utama</div>
                 
-                <a href="{{ route('dashboard') }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all {{ request()->routeIs('dashboard') ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/30' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
+                <a href="{{ route('dashboard') }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all {{ request()->routeIs('dashboard') ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30 font-semibold' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
                     <i class="fa-solid fa-chart-pie w-5 mr-3 text-center {{ request()->routeIs('dashboard') ? 'text-white' : 'text-slate-400' }}"></i>
                     <span>Dashboard</span>
                 </a>
 
-                <a href="{{ route('tugas-akhir.index') }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all {{ request()->routeIs('tugas-akhir.*') ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/30' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
+                <a href="{{ route('tugas-akhir.index') }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all {{ request()->routeIs('tugas-akhir.*') ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30 font-semibold' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
                     <i class="fa-solid fa-book-bookmark w-5 mr-3 text-center {{ request()->routeIs('tugas-akhir.*') ? 'text-white' : 'text-slate-400' }}"></i>
                     <span>Tugas Akhir / Skripsi</span>
                 </a>
 
-                <a href="{{ route('bimbingan.index') }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all {{ request()->routeIs('bimbingan.*') ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/30' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
+                <a href="{{ route('bimbingan.index') }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all {{ request()->routeIs('bimbingan.*') ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30 font-semibold' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
                     <i class="fa-solid fa-comments w-5 mr-3 text-center {{ request()->routeIs('bimbingan.*') ? 'text-white' : 'text-slate-400' }}"></i>
                     <span>Logbook Bimbingan</span>
                 </a>
 
-                <a href="{{ route('sidang.index') }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all {{ request()->routeIs('sidang.*') ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/30' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
+                <a href="{{ route('sidang.index') }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all {{ request()->routeIs('sidang.*') ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30 font-semibold' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
                     <i class="fa-solid fa-users-rectangle w-5 mr-3 text-center {{ request()->routeIs('sidang.*') ? 'text-white' : 'text-slate-400' }}"></i>
                     <span>Seminar & Sidang</span>
                 </a>
 
                 <div class="pt-4 text-[11px] uppercase tracking-wider text-slate-400 font-bold px-3 mb-2">Kelulusan</div>
 
-                <a href="{{ route('yudisium.index') }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all {{ request()->routeIs('yudisium.*') ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/30' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
+                <a href="{{ route('yudisium.index') }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all {{ request()->routeIs('yudisium.*') ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30 font-semibold' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
                     <i class="fa-solid fa-award w-5 mr-3 text-center {{ request()->routeIs('yudisium.*') ? 'text-white' : 'text-slate-400' }}"></i>
                     <span>Pendaftaran Yudisium</span>
                 </a>
 
-                <a href="{{ route('pengumuman.index') }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all {{ request()->routeIs('pengumuman.*') ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/30' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
+                <a href="{{ route('pengumuman.index') }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all {{ request()->routeIs('pengumuman.*') ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30 font-semibold' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
                     <i class="fa-solid fa-bullhorn w-5 mr-3 text-center {{ request()->routeIs('pengumuman.*') ? 'text-white' : 'text-slate-400' }}"></i>
                     <span>Pengumuman</span>
                 </a>

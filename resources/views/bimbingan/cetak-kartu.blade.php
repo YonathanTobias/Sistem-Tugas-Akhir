@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Kartu Bimbingan - {{ $ta->mahasiswa->nama_lengkap }} ({{ $ta->mahasiswa->nim }})</title>
+    <title>Kartu Kendali Bimbingan - {{ $ta->mahasiswa->nama_lengkap }} ({{ $ta->mahasiswa->nim }})</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @media print {
@@ -14,12 +14,12 @@
 <body class="bg-slate-100 p-4 sm:p-8 font-serif text-slate-900">
 
     <div class="no-print max-w-4xl mx-auto mb-4 flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
-        <span class="text-xs font-sans text-slate-600 font-semibold">Gunakan tombol print untuk mencetak atau menyimpan sebagai PDF.</span>
+        <span class="text-xs font-sans text-slate-600 font-semibold">Gunakan tombol cetak untuk mencetak atau menyimpan sebagai file PDF resmi.</span>
         <div class="flex gap-2">
-            <button onclick="window.print()" class="px-4 py-2 bg-emerald-600 text-white font-sans text-xs font-bold rounded-xl shadow hover:bg-emerald-500">
+            <button onclick="window.print()" class="px-4 py-2 bg-blue-600 text-white font-sans text-xs font-bold rounded-xl shadow hover:bg-blue-500 transition">
                 🖨️ Cetak Kartu Kendali
             </button>
-            <button onclick="window.close()" class="px-4 py-2 bg-slate-200 text-slate-700 font-sans text-xs font-bold rounded-xl hover:bg-slate-300">
+            <button onclick="window.close()" class="px-4 py-2 bg-slate-200 text-slate-700 font-sans text-xs font-bold rounded-xl hover:bg-slate-300 transition">
                 Tutup
             </button>
         </div>
@@ -33,7 +33,7 @@
             <div class="text-center w-full">
                 <h1 class="font-bold text-xs uppercase tracking-wider text-slate-700">YAYASAN KERUKUNAN SANTO CAROLUS BORROMEUS</h1>
                 <h2 class="font-extrabold text-lg uppercase tracking-wide text-slate-900">SEKOLAH TINGGI ILMU KESEHATAN PANTI WALUYA MALANG</h2>
-                <h3 class="font-bold text-xs uppercase text-emerald-800">PROGRAM STUDI {{ strtoupper($ta->mahasiswa->prodi->nama_prodi ?? 'KEPERAWATAN') }} ({{ $ta->mahasiswa->prodi->jenjang ?? 'S1' }})</h3>
+                <h3 class="font-bold text-xs uppercase text-blue-900">PROGRAM STUDI {{ strtoupper($ta->mahasiswa->prodi->nama_prodi ?? 'KEPERAWATAN') }} ({{ $ta->mahasiswa->prodi->jenjang ?? 'S1' }})</h3>
                 <p class="text-[10px] text-slate-600 mt-1 italic">Jl. Yulius Usman No. 62 Malang, Jawa Timur &bull; Telp. (0341) 369003 &bull; Website: www.stikespantiwaluya.ac.id</p>
             </div>
         </div>
@@ -133,7 +133,7 @@
                 <p>Malang, {{ now()->translatedFormat('d F Y') }}</p>
                 <p class="font-bold">Dosen Pembimbing Utama</p>
                 <div class="h-20 flex items-center justify-center">
-                    <span class="px-3 py-1 bg-emerald-50 border border-emerald-300 text-emerald-800 font-mono text-[10px] rounded font-bold">TERVALIDASI SISTEM</span>
+                    <span class="px-3 py-1 bg-blue-50 border border-blue-300 text-blue-900 font-mono text-[10px] rounded font-bold">TERVALIDASI SISTEM</span>
                 </div>
                 <p class="font-bold underline">{{ $ta->pembimbing1->nama_lengkap ?? 'Dosen Pembimbing' }}</p>
                 <p class="text-[10px] text-slate-500">NIDN. {{ $ta->pembimbing1->nidn ?? '-' }}</p>

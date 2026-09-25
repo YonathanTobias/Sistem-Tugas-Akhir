@@ -7,14 +7,14 @@
 
     @if(!$ta)
     <div class="bg-white rounded-3xl border border-slate-200/80 p-8 sm:p-12 text-center shadow-sm max-w-2xl mx-auto space-y-4">
-        <div class="w-20 h-20 rounded-3xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-3xl mx-auto">
+        <div class="w-20 h-20 rounded-3xl bg-blue-50 text-blue-600 flex items-center justify-center text-3xl mx-auto">
             <i class="fa-solid fa-file-signature"></i>
         </div>
         <h2 class="text-xl font-black text-slate-800">Anda Belum Mengajukan Judul Tugas Akhir</h2>
         <p class="text-sm text-slate-500 leading-relaxed">
             Mulai langkah tugas akhir Anda dengan mengajukan judul, abstrak rencana penelitian, dan usulan dosen pembimbing.
         </p>
-        <a href="{{ route('tugas-akhir.create') }}" class="inline-flex items-center px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-2xl text-sm shadow-lg shadow-emerald-600/30 transition">
+        <a href="{{ route('tugas-akhir.create') }}" class="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-2xl text-sm shadow-lg shadow-blue-600/30 transition">
             <i class="fa-solid fa-plus-circle mr-2"></i> Ajukan Judul Sekarang
         </a>
     </div>
@@ -30,7 +30,7 @@
                         {{ $ta->status === 'disetujui' || $ta->status === 'lulus_sidang' || $ta->status === 'selesai' ? 'bg-emerald-100 text-emerald-700' : '' }}
                         {{ $ta->status === 'pengajuan' ? 'bg-amber-100 text-amber-700' : '' }}
                         {{ $ta->status === 'revisi_judul' ? 'bg-orange-100 text-orange-700' : '' }}
-                        {{ $ta->status === 'bimbingan_skripsi' || $ta->status === 'bimbingan_proposal' ? 'bg-sky-100 text-sky-700' : '' }}
+                        {{ $ta->status === 'bimbingan_skripsi' || $ta->status === 'bimbingan_proposal' ? 'bg-blue-100 text-blue-700' : '' }}
                         {{ $ta->status === 'ditolak' ? 'bg-rose-100 text-rose-700' : '' }}
                     ">
                         <i class="fa-solid fa-circle text-[8px] mr-1.5"></i> {{ str_replace('_', ' ', $ta->status) }}
@@ -48,7 +48,7 @@
         <div>
             <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Judul Tugas Akhir</span>
             <h2 class="text-xl sm:text-2xl font-black text-slate-900 mt-1 leading-snug">{{ $ta->judul }}</h2>
-            <div class="mt-2 text-xs text-emerald-700 font-semibold bg-emerald-50 px-3 py-1.5 rounded-lg inline-block">
+            <div class="mt-2 text-xs text-blue-700 font-semibold bg-blue-50 px-3 py-1.5 rounded-lg inline-block border border-blue-100">
                 Bidang Kajian: {{ $ta->bidang_kajian }}
             </div>
         </div>
@@ -86,7 +86,7 @@
 
         @if($ta->file_proposal)
         <div>
-            <a href="{{ asset('storage/' . $ta->file_proposal) }}" target="_blank" class="inline-flex items-center px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-xs transition">
+            <a href="{{ asset('storage/' . $ta->file_proposal) }}" target="_blank" class="inline-flex items-center px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs transition">
                 <i class="fa-solid fa-file-pdf mr-2 text-rose-600"></i> Unduh Berkas Proposal Awal
             </a>
         </div>

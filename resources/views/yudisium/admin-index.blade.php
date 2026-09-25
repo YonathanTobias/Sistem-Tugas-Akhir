@@ -8,7 +8,7 @@
     <!-- Filters & Actions -->
     <div class="bg-white rounded-3xl border border-slate-200/80 p-5 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
         <form action="{{ route('yudisium.index') }}" method="GET" class="flex flex-wrap items-center gap-3">
-            <select name="periode_id" onchange="this.form.submit()" class="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold">
+            <select name="periode_id" onchange="this.form.submit()" class="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-blue-500">
                 <option value="">-- Semua Periode Yudisium --</option>
                 @foreach($periodes as $p)
                 <option value="{{ $p->id }}" {{ request('periode_id') == $p->id ? 'selected' : '' }}>
@@ -17,15 +17,15 @@
                 @endforeach
             </select>
 
-            <select name="status" onchange="this.form.submit()" class="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold">
+            <select name="status" onchange="this.form.submit()" class="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-blue-500">
                 <option value="">-- Semua Status --</option>
                 <option value="diajukan" {{ request('status') === 'diajukan' ? 'selected' : '' }}>⏳ Berkas Masuk</option>
                 <option value="diverifikasi" {{ request('status') === 'diverifikasi' ? 'selected' : '' }}>📋 Terverifikasi Lengkap</option>
-                <option value="lulus" {{ request('status') === 'lulus' ? 'selected' : '' }}>🎓 Lulus & Ber-SKL</option>
+                <option value="lulus" {{ request('status') === 'lulus' ? 'selected' : '' }}>🎓 Lulus Yudisium</option>
                 <option value="ditolak" {{ request('status') === 'ditolak' ? 'selected' : '' }}>❌ Ditolak</option>
             </select>
 
-            <button type="submit" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-bold transition">
+            <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition shadow-sm">
                 Filter
             </button>
             @if(request()->hasAny(['periode_id', 'status']))
@@ -50,11 +50,11 @@
                 </thead>
                 <tbody class="divide-y divide-slate-100">
                     @forelse($pendaftarans as $p)
-                    <tr class="hover:bg-slate-50/80">
+                    <tr class="hover:bg-slate-50/80 transition">
                         <td class="px-6 py-4 font-bold text-slate-900">
                             {{ $p->mahasiswa->nama_lengkap }}
                             <div class="text-[11px] text-slate-400 font-mono">{{ $p->mahasiswa->nim }}</div>
-                            <div class="text-[10px] text-emerald-600 font-semibold">{{ $p->mahasiswa->prodi->nama_prodi ?? 'TI' }}</div>
+                            <div class="text-[10px] text-blue-600 font-semibold">{{ $p->mahasiswa->prodi->nama_prodi ?? 'Prodi' }}</div>
                         </td>
                         <td class="px-6 py-4 font-medium text-slate-800">
                             {{ $p->periodeYudisium->nama_periode }}
@@ -76,7 +76,7 @@
                         <td class="px-6 py-4">
                             <span class="inline-block px-2.5 py-1 text-[10px] font-bold rounded-lg uppercase
                                 {{ $p->status === 'lulus' ? 'bg-emerald-100 text-emerald-700' : '' }}
-                                {{ $p->status === 'diverifikasi' ? 'bg-sky-100 text-sky-700' : '' }}
+                                {{ $p->status === 'diverifikasi' ? 'bg-blue-100 text-blue-700' : '' }}
                                 {{ $p->status === 'diajukan' ? 'bg-amber-100 text-amber-700' : '' }}
                                 {{ $p->status === 'ditolak' ? 'bg-rose-100 text-rose-700' : '' }}
                             ">
@@ -85,8 +85,9 @@
                             @if($p->nomor_sk)
                             <div class="text-[10px] text-slate-400 font-mono mt-0.5">{{ $p->nomor_sk }}</div>
                             @endif
+                        </td>
                         <td class="px-6 py-4 text-center">
-                            <a href="{{ route('yudisium.show', $p->id) }}" class="inline-flex items-center px-3.5 py-1.5 bg-slate-100 hover:bg-emerald-600 hover:text-white text-slate-700 font-bold rounded-xl text-xs transition shadow-sm">
+                            <a href="{{ route('yudisium.show', $p->id) }}" class="inline-flex items-center px-3.5 py-1.5 bg-blue-50 hover:bg-blue-600 hover:text-white text-blue-700 font-bold rounded-xl text-xs transition shadow-sm">
                                 <i class="fa-solid fa-clipboard-check mr-1.5"></i> Verifikasi Berkas
                             </a>
                         </td>

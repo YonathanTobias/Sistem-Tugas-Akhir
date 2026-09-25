@@ -12,10 +12,10 @@
             <p class="text-xs text-slate-500 mt-1">Daftar seminar proposal (Sempro) atau sidang akhir setelah disetujui dosen pembimbing.</p>
         </div>
         <div class="flex items-center gap-3">
-            <a href="{{ route('sidang.daftar', ['jenis' => 'sempro']) }}" class="px-4 py-2.5 bg-sky-600 hover:bg-sky-500 text-white font-bold rounded-xl text-xs shadow-md transition">
+            <a href="{{ route('sidang.daftar', ['jenis' => 'sempro']) }}" class="px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-xs shadow-md shadow-blue-600/20 transition">
                 <i class="fa-solid fa-file-lines mr-1.5"></i> Daftar Sempro
             </a>
-            <a href="{{ route('sidang.daftar', ['jenis' => 'sidang_akhir']) }}" class="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-xs shadow-md shadow-emerald-600/30 transition">
+            <a href="{{ route('sidang.daftar', ['jenis' => 'sidang_akhir']) }}" class="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl text-xs shadow-md shadow-indigo-600/30 transition">
                 <i class="fa-solid fa-graduation-cap mr-1.5"></i> Daftar Sidang Akhir
             </a>
         </div>
@@ -28,7 +28,7 @@
             
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
                 <div class="space-y-0.5">
-                    <span class="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-lg {{ $s->jenis === 'sempro' ? 'bg-sky-100 text-sky-700' : 'bg-emerald-100 text-emerald-700' }}">
+                    <span class="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-lg {{ $s->jenis === 'sempro' ? 'bg-blue-100 text-blue-700' : 'bg-indigo-100 text-indigo-700' }}">
                         {{ $s->jenis === 'sempro' ? 'Seminar Proposal' : 'Sidang Akhir Skripsi' }}
                     </span>
                     <h3 class="text-base font-extrabold text-slate-800 pt-1.5">{{ $s->tugasAkhir->judul }}</h3>
@@ -37,7 +37,7 @@
                 <div class="flex items-center gap-3">
                     <span class="px-3 py-1 rounded-xl text-xs font-bold uppercase tracking-wide
                         {{ $s->status === 'lulus' ? 'bg-emerald-100 text-emerald-700' : '' }}
-                        {{ $s->status === 'dijadwalkan' ? 'bg-sky-100 text-sky-700' : '' }}
+                        {{ $s->status === 'dijadwalkan' ? 'bg-blue-100 text-blue-700' : '' }}
                         {{ $s->status === 'menunggu_jadwal' ? 'bg-amber-100 text-amber-700' : '' }}
                         {{ $s->status === 'revisi' ? 'bg-orange-100 text-orange-700' : '' }}
                     ">

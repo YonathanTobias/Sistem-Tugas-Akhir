@@ -8,7 +8,7 @@
     @if(!$pendaftaran)
     <!-- Banner Belum Mendaftar -->
     <div class="bg-white rounded-3xl border border-slate-200/80 p-8 sm:p-12 text-center shadow-sm max-w-2xl mx-auto space-y-4">
-        <div class="w-20 h-20 rounded-3xl bg-amber-50 text-amber-600 flex items-center justify-center text-3xl mx-auto">
+        <div class="w-20 h-20 rounded-3xl bg-blue-50 text-blue-600 flex items-center justify-center text-3xl mx-auto">
             <i class="fa-solid fa-award"></i>
         </div>
         <h2 class="text-xl font-black text-slate-800">Pendaftaran Yudisium Kelulusan</h2>
@@ -21,7 +21,7 @@
         </p>
 
         @if($ta && $ta->status === 'lulus_sidang' && $periodeAktif)
-        <a href="{{ route('yudisium.daftar') }}" class="inline-flex items-center px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-2xl text-xs shadow-lg shadow-emerald-600/30 transition">
+        <a href="{{ route('yudisium.daftar') }}" class="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-2xl text-xs shadow-lg shadow-blue-600/30 transition">
             <i class="fa-solid fa-file-signature mr-2"></i> Daftar Yudisium Sekarang
         </a>
         @elseif(!$ta || $ta->status !== 'lulus_sidang')
@@ -44,7 +44,7 @@
             <div>
                 <span class="px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wide
                     {{ $pendaftaran->status === 'lulus' ? 'bg-emerald-100 text-emerald-700' : '' }}
-                    {{ $pendaftaran->status === 'diverifikasi' ? 'bg-sky-100 text-sky-700' : '' }}
+                    {{ $pendaftaran->status === 'diverifikasi' ? 'bg-blue-100 text-blue-700' : '' }}
                     {{ $pendaftaran->status === 'diajukan' ? 'bg-amber-100 text-amber-700' : '' }}
                     {{ $pendaftaran->status === 'ditolak' ? 'bg-rose-100 text-rose-700' : '' }}
                 ">
@@ -55,12 +55,12 @@
 
         @if($pendaftaran->status === 'lulus')
         <!-- Congratulation Banner for Graduated Students -->
-        <div class="p-6 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg space-y-3">
+        <div class="p-6 rounded-2xl bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-900 text-white shadow-lg space-y-3">
             <div class="flex items-center gap-3">
-                <i class="fa-solid fa-graduation-cap text-3xl"></i>
+                <i class="fa-solid fa-graduation-cap text-3xl text-cyan-300"></i>
                 <div>
                     <h3 class="font-extrabold text-base">Selamat! Anda Dinyatakan LULUS YUDISIUM</h3>
-                    <p class="text-xs text-emerald-100">Predikat: <strong>{{ $pendaftaran->predikat }}</strong> &bull; IPK Final: <strong>{{ number_format($pendaftaran->ipk_final, 2) }}</strong> &bull; Tanggal Lulus: <strong>{{ $pendaftaran->tgl_lulus ? $pendaftaran->tgl_lulus->translatedFormat('d F Y') : '-' }}</strong></p>
+                    <p class="text-xs text-blue-100">Predikat: <strong>{{ $pendaftaran->predikat }}</strong> &bull; IPK Final: <strong>{{ number_format($pendaftaran->ipk_final, 2) }}</strong> &bull; Tanggal Lulus: <strong>{{ $pendaftaran->tgl_lulus ? $pendaftaran->tgl_lulus->translatedFormat('d F Y') : '-' }}</strong></p>
                 </div>
             </div>
             @if($pendaftaran->catatan_kelulusan)
@@ -89,7 +89,7 @@
                     
                     <div class="space-y-1">
                         <div class="flex items-center gap-2">
-                            <span class="px-2 py-0.5 rounded bg-slate-200 text-slate-700 text-[10px] font-bold uppercase">{{ $syarat->kategori }}</span>
+                            <span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 text-[10px] font-bold uppercase">{{ $syarat->kategori }}</span>
                             <h5 class="font-bold text-xs text-slate-800">{{ $syarat->nama_syarat }}</h5>
                             @if($syarat->is_wajib)
                             <span class="text-[10px] text-rose-600 font-bold">*Wajib</span>
@@ -122,7 +122,7 @@
                         <form action="{{ route('yudisium.upload-berkas', $pendaftaran->id) }}" method="POST" enctype="multipart/form-data" class="flex items-center gap-2">
                             @csrf
                             <input type="hidden" name="syarat_yudisium_id" value="{{ $syarat->id }}">
-                            <label class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-bold cursor-pointer transition">
+                            <label class="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold cursor-pointer transition shadow-sm">
                                 <i class="fa-solid fa-cloud-arrow-up mr-1"></i> {{ $berkas ? 'Ganti File' : 'Upload File' }}
                                 <input type="file" name="file_berkas" accept=".pdf,.jpg,.jpeg,.png" onchange="this.form.submit()" class="hidden">
                             </label>

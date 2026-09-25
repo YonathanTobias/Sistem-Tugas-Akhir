@@ -12,7 +12,7 @@
             <p class="text-xs text-slate-500 mt-1">Berikan catatan revisi, koreksi berkas, atau persetujuan (ACC) pada draft mahasiswa.</p>
         </div>
         <form action="{{ route('bimbingan.index') }}" method="GET" class="flex items-center gap-2">
-            <select name="status" onchange="this.form.submit()" class="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold">
+            <select name="status" onchange="this.form.submit()" class="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-blue-500">
                 <option value="">-- Semua Status --</option>
                 <option value="menunggu" {{ request('status') === 'menunggu' ? 'selected' : '' }}>⏳ Menunggu Review</option>
                 <option value="revisi" {{ request('status') === 'revisi' ? 'selected' : '' }}>⚠️ Perlu Revisi</option>
@@ -31,7 +31,7 @@
                     <div class="flex items-center gap-2">
                         <h3 class="font-extrabold text-base text-slate-900">{{ $b->tugasAkhir->mahasiswa->nama_lengkap }}</h3>
                         <span class="text-xs text-slate-400 font-mono">({{ $b->tugasAkhir->mahasiswa->nim }})</span>
-                        <span class="px-2 py-0.5 rounded bg-sky-100 text-sky-700 text-[10px] font-bold uppercase">{{ $b->bab }}</span>
+                        <span class="px-2 py-0.5 rounded bg-blue-100 text-blue-700 text-[10px] font-bold uppercase">{{ $b->bab }}</span>
                     </div>
                     <p class="text-xs font-semibold text-slate-700">{{ $b->topik_bimbingan }}</p>
                     <p class="text-[11px] text-slate-400">Tanggal: {{ $b->tgl_bimbingan->format('d M Y') }} &bull; Judul TA: {{ $b->tugasAkhir->judul }}</p>
@@ -45,7 +45,7 @@
                     ">
                         {{ $b->status }}
                     </span>
-                    <button @click="openReview = !openReview" class="px-4 py-1.5 bg-sky-600 hover:bg-sky-500 text-white font-bold rounded-xl text-xs transition">
+                    <button @click="openReview = !openReview" class="px-4 py-1.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-xs transition shadow-sm">
                         <span x-show="!openReview"><i class="fa-solid fa-pen-to-square mr-1"></i> Beri Feedback</span>
                         <span x-show="openReview"><i class="fa-solid fa-xmark mr-1"></i> Tutup Form</span>
                     </button>
@@ -58,7 +58,7 @@
                 <p class="text-slate-800 leading-relaxed whitespace-pre-line">{{ $b->uraian_mahasiswa }}</p>
                 @if($b->file_draft)
                 <div class="pt-2">
-                    <a href="{{ asset('storage/' . $b->file_draft) }}" target="_blank" class="inline-flex items-center text-sky-600 font-bold hover:underline">
+                    <a href="{{ asset('storage/' . $b->file_draft) }}" target="_blank" class="inline-flex items-center text-blue-600 font-bold hover:underline">
                         <i class="fa-solid fa-download mr-1.5"></i> Unduh File Draft Mahasiswa
                     </a>
                 </div>
@@ -75,13 +75,13 @@
 
             <!-- Expandable Review Form -->
             <div x-show="openReview" x-cloak class="mt-4 pt-4 border-t border-slate-100">
-                <form action="{{ route('bimbingan.feedback', $b->id) }}" method="POST" enctype="multipart/form-data" class="space-y-4 bg-sky-50/50 p-5 rounded-2xl border border-sky-100">
+                <form action="{{ route('bimbingan.feedback', $b->id) }}" method="POST" enctype="multipart/form-data" class="space-y-4 bg-blue-50/50 p-5 rounded-2xl border border-blue-100">
                     @csrf
                     @method('PATCH')
 
                     <div>
                         <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Pilih Status Penilaian <span class="text-rose-500">*</span></label>
-                        <div class="flex items-center gap-4 text-xs font-bold">
+                        <div class="flex flex-wrap items-center gap-4 text-xs font-bold">
                             <label class="flex items-center gap-2 cursor-pointer p-2.5 rounded-xl bg-white border border-slate-200 text-emerald-700">
                                 <input type="radio" name="status" value="acc" {{ $b->status === 'acc' ? 'checked' : '' }} required class="text-emerald-600">
                                 <span>✅ Disetujui (ACC)</span>
@@ -100,16 +100,16 @@
                     <div>
                         <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Catatan & Koreksi untuk Mahasiswa <span class="text-rose-500">*</span></label>
                         <textarea name="catatan_dosen" rows="3" required placeholder="Tuliskan arahan perbaikan, bab selanjutnya, atau instruksi sidang..."
-                            class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-sky-500">{{ old('catatan_dosen', $b->catatan_dosen) }}</textarea>
+                            class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-blue-500">{{ old('catatan_dosen', $b->catatan_dosen) }}</textarea>
                     </div>
 
                     <div>
                         <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Upload File Koreksi / Berkas Bertanda (Opsional)</label>
-                        <input type="file" name="file_revisi_dosen" class="text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-sky-100 file:text-sky-700">
+                        <input type="file" name="file_revisi_dosen" class="text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-blue-100 file:text-blue-700">
                     </div>
 
                     <div class="text-right pt-2">
-                        <button type="submit" class="px-5 py-2 bg-sky-600 hover:bg-sky-500 text-white font-bold rounded-xl text-xs shadow-md transition">
+                        <button type="submit" class="px-5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-xs shadow-md shadow-blue-600/30 transition">
                             Simpan Feedback
                         </button>
                     </div>

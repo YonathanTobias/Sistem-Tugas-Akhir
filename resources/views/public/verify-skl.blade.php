@@ -14,7 +14,7 @@
         
         <!-- Header -->
         <div class="text-center mb-6">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-400 text-white shadow-xl shadow-emerald-500/20 mb-3">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-tr from-blue-600 to-cyan-500 text-white shadow-xl shadow-blue-500/20 mb-3">
                 <i class="fa-solid fa-shield-halved text-3xl"></i>
             </div>
             <h1 class="text-2xl font-black tracking-tight text-white">Verifikasi Dokumen Kelulusan</h1>
@@ -23,12 +23,12 @@
 
         @if($pendaftaran && $pendaftaran->status === 'lulus')
         <!-- Valid Certificate Card -->
-        <div class="bg-slate-900 border-2 border-emerald-500/80 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-5">
+        <div class="bg-slate-900 border-2 border-blue-500/80 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-5">
             
-            <div class="flex items-center gap-3 p-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
-                <i class="fa-solid fa-circle-check text-2xl"></i>
+            <div class="flex items-center gap-3 p-3.5 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-400">
+                <i class="fa-solid fa-circle-check text-2xl text-emerald-400"></i>
                 <div>
-                    <h3 class="font-extrabold text-sm uppercase tracking-wider">Dokumen Asli & Valid</h3>
+                    <h3 class="font-extrabold text-sm uppercase tracking-wider text-white">Dokumen Asli & Valid</h3>
                     <p class="text-[11px] text-slate-300">Surat Keterangan Lulus ini terdaftar resmi pada pangkalan data STIKes Panti Waluya Malang.</p>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="pt-2 flex justify-between">
                     <span class="text-slate-400">NIM:</span>
-                    <span class="font-mono font-bold text-emerald-400">{{ $pendaftaran->mahasiswa->nim }}</span>
+                    <span class="font-mono font-bold text-cyan-400">{{ $pendaftaran->mahasiswa->nim }}</span>
                 </div>
                 <div class="pt-2 flex justify-between">
                     <span class="text-slate-400">Program Studi:</span>
@@ -48,7 +48,7 @@
                 </div>
                 <div class="pt-2 flex justify-between">
                     <span class="text-slate-400">Gelar Kelulusan:</span>
-                    <span class="font-bold text-emerald-400">{{ $pendaftaran->mahasiswa->prodi->gelar_lulusan ?? 'Sarjana Keperawatan (S.Kep.)' }}</span>
+                    <span class="font-bold text-blue-400">{{ $pendaftaran->mahasiswa->prodi->gelar_lulusan ?? 'Sarjana Keperawatan (S.Kep.)' }}</span>
                 </div>
                 <div class="pt-2 flex justify-between">
                     <span class="text-slate-400">Tanggal Kelulusan:</span>
@@ -65,7 +65,7 @@
             </div>
 
             <div class="pt-4 border-t border-slate-800 text-center text-[11px] text-slate-400">
-                <i class="fa-solid fa-lock text-emerald-500 mr-1"></i> Tervalidasi dengan Token Kriptografi Digital:
+                <i class="fa-solid fa-lock text-blue-400 mr-1"></i> Tervalidasi dengan Token Kriptografi Digital:
                 <div class="font-mono text-[9px] text-slate-400 truncate mt-1">{{ $pendaftaran->skl_token }}</div>
             </div>
 

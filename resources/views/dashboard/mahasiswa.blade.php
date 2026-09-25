@@ -6,21 +6,21 @@
 <div class="space-y-6">
 
     <!-- Profile & Status Card -->
-    <div class="bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6">
+    <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-indigo-950 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6 border border-blue-900/40">
         <div class="space-y-2">
-            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                Portal Akademik Mahasiswa
+            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30 inline-flex items-center gap-1.5">
+                <i class="fa-solid fa-graduation-cap text-xs text-blue-400"></i> Portal Akademik Mahasiswa
             </span>
             <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">{{ $mahasiswa->nama_lengkap }}</h2>
             <p class="text-slate-300 text-sm">
-                NIM: <span class="font-mono text-emerald-400 font-bold">{{ $mahasiswa->nim }}</span> | 
-                Prodi: {{ $mahasiswa->prodi->nama_prodi ?? 'Teknik Informatika' }} | 
-                IPK: <span class="text-emerald-300 font-bold">{{ number_format($mahasiswa->ipk, 2) }}</span>
+                NIM: <span class="font-mono text-cyan-300 font-bold">{{ $mahasiswa->nim }}</span> | 
+                Prodi: <span class="font-medium text-white">{{ $mahasiswa->prodi->nama_prodi ?? 'Program Studi' }}</span> | 
+                IPK: <span class="text-cyan-300 font-bold">{{ number_format($mahasiswa->ipk, 2) }}</span>
             </p>
         </div>
         <div class="flex items-center gap-3">
             @if(!$ta)
-            <a href="{{ route('tugas-akhir.create') }}" class="px-5 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-2xl text-xs shadow-lg transition">
+            <a href="{{ route('tugas-akhir.create') }}" class="px-5 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-2xl text-xs shadow-lg shadow-blue-600/30 transition">
                 <i class="fa-solid fa-plus-circle mr-1.5"></i> Ajukan Judul TA
             </a>
             @else
@@ -49,48 +49,48 @@
         <div class="grid grid-cols-1 sm:grid-cols-5 gap-3">
             
             <!-- Step 1 -->
-            <div class="p-3.5 rounded-2xl border {{ $currentStep >= 1 ? 'bg-emerald-50/50 border-emerald-200 text-emerald-900' : 'bg-slate-50 border-slate-200 text-slate-400' }}">
+            <div class="p-3.5 rounded-2xl border {{ $currentStep >= 1 ? 'bg-blue-50/70 border-blue-200 text-blue-950' : 'bg-slate-50 border-slate-200 text-slate-400' }}">
                 <div class="flex items-center gap-2 mb-1.5">
-                    <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold {{ $currentStep >= 1 ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-600' }}">1</span>
+                    <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold {{ $currentStep >= 1 ? 'bg-blue-600 text-white' : 'bg-slate-200 text-slate-600' }}">1</span>
                     <span class="text-xs font-bold">Pengajuan Judul</span>
                 </div>
-                <p class="text-[11px] {{ $currentStep >= 1 ? 'text-emerald-700' : 'text-slate-400' }}">Proposal & Review Pembimbing</p>
+                <p class="text-[11px] {{ $currentStep >= 1 ? 'text-blue-700 font-medium' : 'text-slate-400' }}">Proposal & Plotting</p>
             </div>
 
             <!-- Step 2 -->
-            <div class="p-3.5 rounded-2xl border {{ $currentStep >= 2 ? 'bg-emerald-50/50 border-emerald-200 text-emerald-900' : 'bg-slate-50 border-slate-200 text-slate-400' }}">
+            <div class="p-3.5 rounded-2xl border {{ $currentStep >= 2 ? 'bg-blue-50/70 border-blue-200 text-blue-950' : 'bg-slate-50 border-slate-200 text-slate-400' }}">
                 <div class="flex items-center gap-2 mb-1.5">
-                    <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold {{ $currentStep >= 2 ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-600' }}">2</span>
+                    <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold {{ $currentStep >= 2 ? 'bg-blue-600 text-white' : 'bg-slate-200 text-slate-600' }}">2</span>
                     <span class="text-xs font-bold">Bimbingan Bab 1-3</span>
                 </div>
-                <p class="text-[11px] {{ $currentStep >= 2 ? 'text-emerald-700' : 'text-slate-400' }}">Logbook draft proposal</p>
+                <p class="text-[11px] {{ $currentStep >= 2 ? 'text-blue-700 font-medium' : 'text-slate-400' }}">Logbook Proposal</p>
             </div>
 
             <!-- Step 3 -->
-            <div class="p-3.5 rounded-2xl border {{ $currentStep >= 3 ? 'bg-emerald-50/50 border-emerald-200 text-emerald-900' : 'bg-slate-50 border-slate-200 text-slate-400' }}">
+            <div class="p-3.5 rounded-2xl border {{ $currentStep >= 3 ? 'bg-blue-50/70 border-blue-200 text-blue-950' : 'bg-slate-50 border-slate-200 text-slate-400' }}">
                 <div class="flex items-center gap-2 mb-1.5">
-                    <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold {{ $currentStep >= 3 ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-600' }}">3</span>
+                    <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold {{ $currentStep >= 3 ? 'bg-blue-600 text-white' : 'bg-slate-200 text-slate-600' }}">3</span>
                     <span class="text-xs font-bold">Seminar Proposal</span>
                 </div>
-                <p class="text-[11px] {{ $currentStep >= 3 ? 'text-emerald-700' : 'text-slate-400' }}">Ujian Sempro & Revisi</p>
+                <p class="text-[11px] {{ $currentStep >= 3 ? 'text-blue-700 font-medium' : 'text-slate-400' }}">Ujian Sempro & Revisi</p>
             </div>
 
             <!-- Step 4 -->
-            <div class="p-3.5 rounded-2xl border {{ $currentStep >= 4 ? 'bg-emerald-50/50 border-emerald-200 text-emerald-900' : 'bg-slate-50 border-slate-200 text-slate-400' }}">
+            <div class="p-3.5 rounded-2xl border {{ $currentStep >= 4 ? 'bg-blue-50/70 border-blue-200 text-blue-950' : 'bg-slate-50 border-slate-200 text-slate-400' }}">
                 <div class="flex items-center gap-2 mb-1.5">
-                    <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold {{ $currentStep >= 4 ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-600' }}">4</span>
+                    <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold {{ $currentStep >= 4 ? 'bg-blue-600 text-white' : 'bg-slate-200 text-slate-600' }}">4</span>
                     <span class="text-xs font-bold">Sidang Skripsi</span>
                 </div>
-                <p class="text-[11px] {{ $currentStep >= 4 ? 'text-emerald-700' : 'text-slate-400' }}">Ujian Akhir & Kelulusan</p>
+                <p class="text-[11px] {{ $currentStep >= 4 ? 'text-blue-700 font-medium' : 'text-slate-400' }}">Ujian Akhir & Nilai</p>
             </div>
 
             <!-- Step 5 -->
-            <div class="p-3.5 rounded-2xl border {{ $currentStep >= 5 ? 'bg-emerald-50/50 border-emerald-200 text-emerald-900' : 'bg-slate-50 border-slate-200 text-slate-400' }}">
+            <div class="p-3.5 rounded-2xl border {{ $currentStep >= 5 ? 'bg-blue-50/70 border-blue-200 text-blue-950' : 'bg-slate-50 border-slate-200 text-slate-400' }}">
                 <div class="flex items-center gap-2 mb-1.5">
-                    <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold {{ $currentStep >= 5 ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-600' }}">5</span>
+                    <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold {{ $currentStep >= 5 ? 'bg-blue-600 text-white' : 'bg-slate-200 text-slate-600' }}">5</span>
                     <span class="text-xs font-bold">Yudisium</span>
                 </div>
-                <p class="text-[11px] {{ $currentStep >= 5 ? 'text-emerald-700' : 'text-slate-400' }}">Bebas Tanggungan & Kelulusan</p>
+                <p class="text-[11px] {{ $currentStep >= 5 ? 'text-blue-700 font-medium' : 'text-slate-400' }}">Bebas Tanggungan & Kelulusan</p>
             </div>
 
         </div>
@@ -105,7 +105,7 @@
                 <h3 class="font-bold text-base text-slate-800">Status Tugas Akhir Anda</h3>
                 @if($ta)
                 <span class="px-3 py-1 rounded-lg text-xs font-bold uppercase
-                    {{ $ta->status === 'disetujui' || $ta->status === 'lulus_sidang' ? 'bg-emerald-100 text-emerald-700' : 'bg-sky-100 text-sky-700' }}">
+                    {{ $ta->status === 'disetujui' || $ta->status === 'lulus_sidang' ? 'bg-emerald-100 text-emerald-700' : 'bg-blue-100 text-blue-700' }}">
                     {{ str_replace('_', ' ', $ta->status) }}
                 </span>
                 @endif
@@ -133,21 +133,21 @@
                 <div class="pt-3">
                     <div class="flex items-center justify-between text-xs font-bold mb-1.5">
                         <span class="text-slate-600">Progres ACC Bimbingan (Minimal {{ $minBimbingan }}x):</span>
-                        <span class="text-emerald-600">{{ $totalBimbinganAcc }} / {{ $minBimbingan }} ACC</span>
+                        <span class="text-blue-600">{{ $totalBimbinganAcc }} / {{ $minBimbingan }} ACC</span>
                     </div>
                     <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
-                        <div class="bg-emerald-500 h-2.5 rounded-full transition-all duration-500" style="width: {{ min(100, ($totalBimbinganAcc / $minBimbingan) * 100) }}%"></div>
+                        <div class="bg-blue-600 h-2.5 rounded-full transition-all duration-500" style="width: {{ min(100, ($totalBimbinganAcc / $minBimbingan) * 100) }}%"></div>
                     </div>
                 </div>
             </div>
             @else
             <div class="text-center py-10 space-y-3">
-                <div class="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center mx-auto text-slate-400 text-2xl">
+                <div class="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center mx-auto text-blue-600 text-2xl">
                     <i class="fa-solid fa-file-circle-plus"></i>
                 </div>
                 <h4 class="font-bold text-slate-800 text-sm">Belum Mengajukan Judul Tugas Akhir</h4>
                 <p class="text-xs text-slate-500 max-w-sm mx-auto">Silakan ajukan judul proposal tugas akhir Anda untuk mendapatkan persetujuan dan plotting dosen pembimbing.</p>
-                <a href="{{ route('tugas-akhir.create') }}" class="inline-block px-5 py-2.5 bg-emerald-600 text-white font-bold rounded-xl text-xs shadow-md">
+                <a href="{{ route('tugas-akhir.create') }}" class="inline-block px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-xs shadow-md shadow-blue-600/30 transition">
                     Ajukan Sekarang
                 </a>
             </div>
@@ -163,7 +163,7 @@
                 <div class="p-4 rounded-2xl {{ $pendaftaranYudisium->status === 'lulus' ? 'bg-emerald-50 border border-emerald-200 text-emerald-900' : 'bg-amber-50 border border-amber-200 text-amber-900' }}">
                     <div class="font-bold text-sm flex items-center justify-between">
                         <span>Hasil Yudisium:</span>
-                        <span class="uppercase px-2 py-0.5 rounded-md font-extrabold {{ $pendaftaranYudisium->status === 'lulus' ? 'bg-emerald-600 text-white' : 'bg-amber-500 text-white' }}">
+                        <span class="uppercase px-2.5 py-0.5 rounded-md font-extrabold text-[11px] {{ $pendaftaranYudisium->status === 'lulus' ? 'bg-emerald-600 text-white' : 'bg-amber-500 text-white' }}">
                             {{ $pendaftaranYudisium->status === 'lulus' ? 'Dinyatakan LULUS' : $pendaftaranYudisium->status }}
                         </span>
                     </div>
@@ -188,7 +188,7 @@
                     @endif
                 </div>
 
-                <a href="{{ route('yudisium.index') }}" class="block w-full text-center py-2.5 px-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-xs shadow transition">
+                <a href="{{ route('yudisium.index') }}" class="block w-full text-center py-2.5 px-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-xs shadow-md shadow-blue-600/30 transition">
                     Lihat Rincian Yudisium &rarr;
                 </a>
                 @else

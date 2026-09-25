@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
-<body class="h-full flex items-center justify-center p-4 font-sans antialiased bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950">
+<body class="h-full flex items-center justify-center p-4 font-sans antialiased bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950">
 
     <div class="w-full max-w-md" x-data="{
         fillCredentials(login, pwd) {
@@ -19,10 +19,10 @@
     }">
         <!-- App Logo & Header -->
         <div class="text-center mb-8">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-400 text-white shadow-xl shadow-emerald-500/20 mb-4 ring-8 ring-emerald-500/10">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-tr from-blue-600 to-cyan-400 text-white shadow-xl shadow-blue-500/20 mb-4 ring-8 ring-blue-500/10">
                 <i class="fa-solid fa-graduation-cap text-3xl"></i>
             </div>
-            <h1 class="text-2xl font-black tracking-tight text-white">SIMTA <span class="text-emerald-400">Panti Waluya</span></h1>
+            <h1 class="text-2xl font-black tracking-tight text-white">SIMTA <span class="text-cyan-400">Panti Waluya</span></h1>
             <p class="text-sm text-slate-400 mt-1">Sistem Informasi Tugas Akhir & Yudisium STIKes Panti Waluya Malang</p>
         </div>
 
@@ -30,7 +30,7 @@
         <div class="bg-slate-900/90 backdrop-blur-xl border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl">
             
             @if(session('success'))
-            <div class="mb-5 p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium flex items-center">
+            <div class="mb-5 p-3.5 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-medium flex items-center">
                 <i class="fa-solid fa-circle-check mr-2"></i> {{ session('success') }}
             </div>
             @endif
@@ -51,8 +51,8 @@
                         </span>
                         <input type="text" name="login" id="login" required autofocus
                             value="{{ old('login') }}"
-                            placeholder="misal: 220101001 atau admin@stikespantiwaluya.ac.id"
-                            class="w-full pl-10 pr-4 py-3 bg-slate-950 border border-slate-700/80 rounded-xl text-white text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 placeholder-slate-500 transition">
+                            placeholder="misal: 220101001 atau admin.kep@stikespantiwaluya.ac.id"
+                            class="w-full pl-10 pr-4 py-3 bg-slate-950 border border-slate-700/80 rounded-xl text-white text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 placeholder-slate-500 transition">
                     </div>
                 </div>
 
@@ -64,19 +64,19 @@
                         </span>
                         <input type="password" name="password" id="password" required
                             placeholder="••••••••"
-                            class="w-full pl-10 pr-4 py-3 bg-slate-950 border border-slate-700/80 rounded-xl text-white text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 placeholder-slate-500 transition">
+                            class="w-full pl-10 pr-4 py-3 bg-slate-950 border border-slate-700/80 rounded-xl text-white text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 placeholder-slate-500 transition">
                     </div>
                 </div>
 
                 <div class="flex items-center justify-between text-xs pt-1">
                     <label class="flex items-center text-slate-400 cursor-pointer">
-                        <input type="checkbox" name="remember" class="w-4 h-4 rounded border-slate-700 bg-slate-950 text-emerald-600 focus:ring-emerald-500 mr-2">
+                        <input type="checkbox" name="remember" class="w-4 h-4 rounded border-slate-700 bg-slate-950 text-blue-600 focus:ring-blue-500 mr-2">
                         <span>Ingat saya</span>
                     </label>
-                    <a href="{{ route('register') }}" class="text-emerald-400 hover:text-emerald-300 font-semibold transition">Daftar Mahasiswa</a>
+                    <a href="{{ route('register') }}" class="text-cyan-400 hover:text-cyan-300 font-semibold transition">Daftar Mahasiswa</a>
                 </div>
 
-                <button type="submit" class="w-full py-3 px-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-sm shadow-lg shadow-emerald-600/30 transition duration-200 mt-2">
+                <button type="submit" class="w-full py-3 px-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-sm shadow-lg shadow-blue-600/30 transition duration-200 mt-2">
                     Masuk ke Sistem <i class="fa-solid fa-arrow-right ml-1.5"></i>
                 </button>
             </form>
@@ -92,12 +92,12 @@
                     </button>
                     <button type="button" @click="fillCredentials('admin.kep@stikespantiwaluya.ac.id', 'password')"
                         class="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-left border border-slate-700 text-slate-300 hover:text-white transition">
-                        <div class="font-bold text-indigo-400">🩺 Admin S1 Keperawatan</div>
+                        <div class="font-bold text-blue-400">🩺 Admin Keperawatan</div>
                         <div class="text-[10px] text-slate-400 truncate">admin.kep@stikespantiwaluya.ac.id</div>
                     </button>
                     <button type="button" @click="fillCredentials('admin.far@stikespantiwaluya.ac.id', 'password')"
                         class="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-left border border-slate-700 text-slate-300 hover:text-white transition">
-                        <div class="font-bold text-purple-400">💊 Admin S1 Farmasi</div>
+                        <div class="font-bold text-indigo-400">💊 Admin S1 Farmasi</div>
                         <div class="text-[10px] text-slate-400 truncate">admin.far@stikespantiwaluya.ac.id</div>
                     </button>
                     <button type="button" @click="fillCredentials('admin.mik@stikespantiwaluya.ac.id', 'password')"

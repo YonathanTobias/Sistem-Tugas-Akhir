@@ -11,7 +11,7 @@
             <h2 class="text-xl font-black text-slate-800">Master Periode Pendaftaran Yudisium</h2>
             <p class="text-xs text-slate-500 mt-1">Buka gelombang dan jadwal pelaksanaan yudisium untuk mahasiswa.</p>
         </div>
-        <button @click="modalAdd = true" class="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-xs shadow-md shadow-emerald-600/30 transition">
+        <button @click="modalAdd = true" class="px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-xs shadow-md shadow-blue-600/30 transition">
             <i class="fa-solid fa-plus-circle mr-1.5"></i> Buka Periode Baru
         </button>
     </div>
@@ -31,7 +31,7 @@
                 </thead>
                 <tbody class="divide-y divide-slate-100">
                     @forelse($periodes as $p)
-                    <tr class="hover:bg-slate-50/80">
+                    <tr class="hover:bg-slate-50/80 transition">
                         <td class="px-6 py-4 font-bold text-slate-900 text-sm">
                             {{ $p->nama_periode }}
                         </td>
@@ -46,7 +46,7 @@
                         </td>
                         <td class="px-6 py-4 text-center">
                             @if($p->is_aktif)
-                            <span class="inline-block px-3 py-1 rounded-full text-[10px] font-extrabold bg-emerald-100 text-emerald-800 uppercase">
+                            <span class="inline-block px-3 py-1 rounded-full text-[10px] font-extrabold bg-blue-100 text-blue-800 uppercase">
                                 ✅ Periode Aktif
                             </span>
                             @else
@@ -78,46 +78,46 @@
                 @csrf
                 <div>
                     <label class="block font-bold text-slate-700 uppercase mb-1">Nama Periode *</label>
-                    <input type="text" name="nama_periode" required placeholder="misal: Yudisium Sarjana Periode Genap 2026/2027" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl">
+                    <input type="text" name="nama_periode" required placeholder="misal: Yudisium STIKes Periode Genap 2026/2027" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500">
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block font-bold text-slate-700 uppercase mb-1">Tahun Akademik *</label>
-                        <input type="text" name="tahun_akademik" value="2026/2027" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl">
+                        <input type="text" name="tahun_akademik" value="2026/2027" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500">
                     </div>
                     <div>
                         <label class="block font-bold text-slate-700 uppercase mb-1">Kuota Peserta</label>
-                        <input type="number" name="kuota" placeholder="misal: 150" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl">
+                        <input type="number" name="kuota" placeholder="misal: 150" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block font-bold text-slate-700 uppercase mb-1">Tanggal Mulai Buka *</label>
-                        <input type="date" name="tgl_buka" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl">
+                        <input type="date" name="tgl_buka" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500">
                     </div>
                     <div>
                         <label class="block font-bold text-slate-700 uppercase mb-1">Batas Akhir Pendaftaran *</label>
-                        <input type="date" name="tgl_tutup" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl">
+                        <input type="date" name="tgl_tutup" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500">
                     </div>
                 </div>
 
                 <div>
                     <label class="block font-bold text-slate-700 uppercase mb-1">Tanggal Pelaksanaan Yudisium *</label>
-                    <input type="date" name="tgl_pelaksanaan" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl">
+                    <input type="date" name="tgl_pelaksanaan" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500">
                 </div>
 
                 <div class="pt-2">
                     <label class="flex items-center gap-2 cursor-pointer font-bold text-slate-700">
-                        <input type="checkbox" name="is_aktif" value="1" checked class="w-4 h-4 text-emerald-600 rounded">
+                        <input type="checkbox" name="is_aktif" value="1" checked class="w-4 h-4 text-blue-600 rounded">
                         <span>Aktifkan periode ini sebagai periode berjalan</span>
                     </label>
                 </div>
 
                 <div class="pt-3 flex justify-end gap-2 border-t border-slate-100">
                     <button type="button" @click="modalAdd = false" class="px-4 py-2 text-slate-500 font-bold">Batal</button>
-                    <button type="submit" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl shadow">Buka Periode</button>
+                    <button type="submit" class="px-5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl shadow-md shadow-blue-600/30 transition">Buka Periode</button>
                 </div>
             </form>
         </div>

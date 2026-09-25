@@ -11,7 +11,7 @@
             <h2 class="text-xl font-black text-slate-800">Master Data Dosen Pembimbing</h2>
             <p class="text-xs text-slate-500 mt-1">Kelola data dosen, keahlian, dan kuota bimbingan skripsi mahasiswa.</p>
         </div>
-        <button @click="modalAdd = true" class="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-xs shadow-md shadow-emerald-600/30 transition">
+        <button @click="modalAdd = true" class="px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-xs shadow-md shadow-blue-600/30 transition">
             <i class="fa-solid fa-plus-circle mr-1.5"></i> Tambah Dosen Baru
         </button>
     </div>
@@ -31,7 +31,7 @@
                 </thead>
                 <tbody class="divide-y divide-slate-100">
                     @forelse($dosens as $d)
-                    <tr class="hover:bg-slate-50/80">
+                    <tr class="hover:bg-slate-50/80 transition">
                         <td class="px-6 py-4">
                             <div class="font-bold text-slate-900 text-sm">{{ $d->nama_lengkap }} {{ $d->gelar ? ', ' . $d->gelar : '' }}</div>
                             <div class="text-[11px] text-slate-400">{{ $d->user->email ?? '-' }}</div>
@@ -41,15 +41,15 @@
                             <div class="text-[10px] text-slate-400 font-normal">NIP: {{ $d->nip ?? '-' }}</div>
                         </td>
                         <td class="px-6 py-4 font-medium text-slate-800">
-                            {{ $d->prodi->nama_prodi ?? 'TI' }}
+                            {{ $d->prodi->nama_prodi ?? 'Prodi' }}
                         </td>
                         <td class="px-6 py-4">
-                            <span class="inline-block px-2.5 py-1 rounded-lg bg-sky-50 text-sky-700 font-semibold text-[11px]">
+                            <span class="inline-block px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 font-semibold text-[11px]">
                                 {{ $d->bidang_keahlian ?? 'Umum' }}
                             </span>
                         </td>
                         <td class="px-6 py-4 text-center font-bold text-slate-800">
-                            <span class="text-emerald-600">{{ $d->bimbinganTugasAkhir1->count() + $d->bimbinganTugasAkhir2->count() }}</span> / {{ $d->kuota_bimbingan }}
+                            <span class="text-blue-600">{{ $d->bimbinganTugasAkhir1->count() + $d->bimbinganTugasAkhir2->count() }}</span> / {{ $d->kuota_bimbingan }}
                         </td>
                     </tr>
                     @empty
@@ -81,34 +81,34 @@
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block font-bold text-slate-700 uppercase mb-1">Nama Lengkap *</label>
-                        <input type="text" name="nama_lengkap" required placeholder="misal: Dr. Budi Santoso" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl">
+                        <input type="text" name="nama_lengkap" required placeholder="misal: Dr. Budi Santoso" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500">
                     </div>
                     <div>
                         <label class="block font-bold text-slate-700 uppercase mb-1">Gelar Akademik</label>
-                        <input type="text" name="gelar" placeholder="misal: M.Kom., Ph.D." class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl">
+                        <input type="text" name="gelar" placeholder="misal: M.Kep., Sp.Kep.MB" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block font-bold text-slate-700 uppercase mb-1">NIDN (Username Login) *</label>
-                        <input type="text" name="nidn" required placeholder="misal: 0012058001" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl">
+                        <input type="text" name="nidn" required placeholder="misal: 0012058001" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500">
                     </div>
                     <div>
                         <label class="block font-bold text-slate-700 uppercase mb-1">NIP</label>
-                        <input type="text" name="nip" placeholder="misal: 19800512..." class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl">
+                        <input type="text" name="nip" placeholder="misal: 19800512..." class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500">
                     </div>
                 </div>
 
                 <div>
                     <label class="block font-bold text-slate-700 uppercase mb-1">Email Kampus / Akun *</label>
-                    <input type="email" name="email" required placeholder="misal: dosen@kampus.ac.id" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl">
+                    <input type="email" name="email" required placeholder="misal: dosen@stikespantiwaluya.ac.id" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500">
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block font-bold text-slate-700 uppercase mb-1">Program Studi *</label>
-                        <select name="prodi_id" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-bold">
+                        <select name="prodi_id" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-bold focus:outline-none focus:border-blue-500">
                             @foreach($prodis as $p)
                             <option value="{{ $p->id }}">{{ $p->nama_prodi }}</option>
                             @endforeach
@@ -116,18 +116,18 @@
                     </div>
                     <div>
                         <label class="block font-bold text-slate-700 uppercase mb-1">Kuota Bimbingan *</label>
-                        <input type="number" name="kuota_bimbingan" value="10" min="1" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl">
+                        <input type="number" name="kuota_bimbingan" value="10" min="1" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500">
                     </div>
                 </div>
 
                 <div>
                     <label class="block font-bold text-slate-700 uppercase mb-1">Bidang Keahlian / Riset</label>
-                    <input type="text" name="bidang_keahlian" placeholder="misal: Machine Learning, Cloud Computing" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl">
+                    <input type="text" name="bidang_keahlian" placeholder="misal: Keperawatan Medikal Bedah, Farmakoterapi" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500">
                 </div>
 
                 <div class="pt-3 flex justify-end gap-2 border-t border-slate-100">
                     <button type="button" @click="modalAdd = false" class="px-4 py-2 text-slate-500 font-bold">Batal</button>
-                    <button type="submit" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl shadow">Simpan Dosen</button>
+                    <button type="submit" class="px-5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl shadow-md shadow-blue-600/30 transition">Simpan Dosen</button>
                 </div>
             </form>
         </div>

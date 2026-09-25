@@ -7,7 +7,7 @@
 
     <div class="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-sm space-y-6">
         <div>
-            <span class="px-3 py-1 rounded-lg text-xs font-bold uppercase {{ $jenis === 'sempro' ? 'bg-sky-100 text-sky-700' : 'bg-emerald-100 text-emerald-700' }}">
+            <span class="px-3 py-1 rounded-lg text-xs font-bold uppercase {{ $jenis === 'sempro' ? 'bg-blue-100 text-blue-700' : 'bg-indigo-100 text-indigo-700' }}">
                 {{ $jenis === 'sempro' ? 'Seminar Proposal' : 'Sidang Akhir Skripsi' }}
             </span>
             <h2 class="text-xl font-black text-slate-800 mt-2">Konfirmasi Pendaftaran Ujian</h2>
@@ -35,8 +35,8 @@
             @csrf
             <input type="hidden" name="jenis" value="{{ $jenis }}">
 
-            <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-100 text-xs text-emerald-900 flex items-start gap-3">
-                <i class="fa-solid fa-circle-check text-emerald-600 text-base mt-0.5"></i>
+            <div class="p-4 rounded-2xl bg-blue-50 border border-blue-100 text-xs text-blue-950 flex items-start gap-3">
+                <i class="fa-solid fa-circle-info text-blue-600 text-base mt-0.5"></i>
                 <div class="space-y-1">
                     <strong class="font-bold">Ketentuan Pendaftaran:</strong>
                     <p>Setelah mengirimkan permohonan pendaftaran, Koordinator Program Studi akan menjadwalkan tanggal, jam, ruangan ujian, dan menentukan dewan dosen penguji.</p>
@@ -45,7 +45,7 @@
 
             <div class="pt-4 flex items-center justify-end gap-3 border-t border-slate-100">
                 <a href="{{ route('sidang.index') }}" class="px-5 py-2.5 text-xs font-bold text-slate-500 hover:text-slate-700">Batal</a>
-                <button type="submit" class="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-xs shadow-lg shadow-emerald-600/30 transition">
+                <button type="submit" class="px-6 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-xs shadow-lg shadow-blue-600/30 transition">
                     <i class="fa-solid fa-paper-plane mr-1.5"></i> Kirim Pendaftaran
                 </button>
             </div>

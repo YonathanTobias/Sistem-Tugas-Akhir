@@ -13,13 +13,13 @@
             <div>
                 <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Informasi Mahasiswa</span>
                 <h3 class="text-lg font-black text-slate-800">{{ $ta->mahasiswa->nama_lengkap }}</h3>
-                <p class="text-xs text-slate-500">NIM: <span class="font-mono font-bold">{{ $ta->mahasiswa->nim }}</span> | Prodi: {{ $ta->mahasiswa->prodi->nama_prodi ?? 'TI' }} | No. HP: {{ $ta->mahasiswa->no_hp ?? '-' }}</p>
+                <p class="text-xs text-slate-500">NIM: <span class="font-mono font-bold text-slate-700">{{ $ta->mahasiswa->nim }}</span> | Prodi: <span class="font-semibold text-blue-700">{{ $ta->mahasiswa->prodi->nama_prodi ?? 'Prodi' }}</span> | No. HP: {{ $ta->mahasiswa->no_hp ?? '-' }}</p>
             </div>
             <div>
                 <span class="px-3.5 py-1.5 rounded-xl text-xs font-black uppercase tracking-wide
                     {{ $ta->status === 'disetujui' || $ta->status === 'lulus_sidang' || $ta->status === 'selesai' ? 'bg-emerald-100 text-emerald-700' : '' }}
                     {{ $ta->status === 'pengajuan' ? 'bg-amber-100 text-amber-700' : '' }}
-                    {{ $ta->status === 'bimbingan_skripsi' || $ta->status === 'bimbingan_proposal' ? 'bg-sky-100 text-sky-700' : '' }}
+                    {{ $ta->status === 'bimbingan_skripsi' || $ta->status === 'bimbingan_proposal' ? 'bg-blue-100 text-blue-700' : '' }}
                     {{ $ta->status === 'ditolak' ? 'bg-rose-100 text-rose-700' : '' }}
                 ">
                     {{ str_replace('_', ' ', $ta->status) }}
@@ -31,7 +31,7 @@
         <div>
             <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Judul Penelitian</span>
             <h2 class="text-xl font-extrabold text-slate-900 mt-1 leading-snug">{{ $ta->judul }}</h2>
-            <div class="mt-2 text-xs text-emerald-700 font-semibold bg-emerald-50 px-3 py-1 rounded-lg inline-block">
+            <div class="mt-2 text-xs text-blue-700 font-semibold bg-blue-50 px-3 py-1 rounded-lg inline-block border border-blue-100">
                 Bidang Kajian: {{ $ta->bidang_kajian }}
             </div>
         </div>
@@ -64,7 +64,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Dosen Pembimbing 1 (Utama)</label>
-                        <select name="pembimbing1_id" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs">
+                        <select name="pembimbing1_id" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-blue-500">
                             <option value="">-- Pilih Pembimbing 1 --</option>
                             @foreach($dosens as $d)
                             <option value="{{ $d->id }}" {{ $ta->pembimbing1_id == $d->id ? 'selected' : '' }}>
@@ -76,7 +76,7 @@
 
                     <div>
                         <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Dosen Pembimbing 2 (Pendamping)</label>
-                        <select name="pembimbing2_id" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs">
+                        <select name="pembimbing2_id" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-blue-500">
                             <option value="">-- Pilih Pembimbing 2 (Opsional) --</option>
                             @foreach($dosens as $d)
                             <option value="{{ $d->id }}" {{ $ta->pembimbing2_id == $d->id ? 'selected' : '' }}>
@@ -90,7 +90,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Ubah Status Tugas Akhir</label>
-                        <select name="status" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-bold">
+                        <select name="status" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-bold focus:outline-none focus:border-blue-500">
                             <option value="pengajuan" {{ $ta->status === 'pengajuan' ? 'selected' : '' }}>Pengajuan</option>
                             <option value="disetujui" {{ $ta->status === 'disetujui' ? 'selected' : '' }}>Disetujui (ACC)</option>
                             <option value="bimbingan_proposal" {{ $ta->status === 'bimbingan_proposal' ? 'selected' : '' }}>Bimbingan Proposal</option>
@@ -108,12 +108,12 @@
                     <div>
                         <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Catatan / Arahan Prodi</label>
                         <input type="text" name="catatan_prodi" value="{{ $ta->catatan_prodi }}" placeholder="Catatan untuk mahasiswa atau dosen..."
-                            class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs">
+                            class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-blue-500">
                     </div>
                 </div>
 
                 <div class="pt-2 text-right">
-                    <button type="submit" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-xs shadow-md transition">
+                    <button type="submit" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-xs shadow-md shadow-blue-600/30 transition">
                         <i class="fa-solid fa-floppy-disk mr-1.5"></i> Simpan Plotting & Perubahan
                     </button>
                 </div>

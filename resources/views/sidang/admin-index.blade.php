@@ -8,13 +8,13 @@
     <!-- Filters -->
     <div class="bg-white rounded-3xl border border-slate-200/80 p-5 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
         <form action="{{ route('sidang.index') }}" method="GET" class="flex flex-wrap items-center gap-3">
-            <select name="jenis" onchange="this.form.submit()" class="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold">
+            <select name="jenis" onchange="this.form.submit()" class="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-blue-500">
                 <option value="">-- Semua Jenis Sidang --</option>
                 <option value="sempro" {{ request('jenis') === 'sempro' ? 'selected' : '' }}>Seminar Proposal (Sempro)</option>
                 <option value="sidang_akhir" {{ request('jenis') === 'sidang_akhir' ? 'selected' : '' }}>Sidang Akhir Skripsi</option>
             </select>
 
-            <select name="status" onchange="this.form.submit()" class="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold">
+            <select name="status" onchange="this.form.submit()" class="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-blue-500">
                 <option value="">-- Semua Status --</option>
                 <option value="menunggu_jadwal" {{ request('status') === 'menunggu_jadwal' ? 'selected' : '' }}>⏳ Menunggu Jadwal</option>
                 <option value="dijadwalkan" {{ request('status') === 'dijadwalkan' ? 'selected' : '' }}>📅 Dijadwalkan</option>
@@ -22,7 +22,7 @@
                 <option value="revisi" {{ request('status') === 'revisi' ? 'selected' : '' }}>⚠️ Revisi</option>
             </select>
 
-            <button type="submit" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-bold transition">
+            <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition shadow-sm">
                 Filter
             </button>
             @if(request()->hasAny(['jenis', 'status']))
@@ -47,13 +47,13 @@
                 </thead>
                 <tbody class="divide-y divide-slate-100">
                     @forelse($sidangs as $s)
-                    <tr class="hover:bg-slate-50/80">
+                    <tr class="hover:bg-slate-50/80 transition">
                         <td class="px-6 py-4 font-bold text-slate-900">
                             {{ $s->tugasAkhir->mahasiswa->nama_lengkap }}
                             <div class="text-[11px] text-slate-400 font-mono">{{ $s->tugasAkhir->mahasiswa->nim }}</div>
                         </td>
                         <td class="px-6 py-4 max-w-xs">
-                            <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase {{ $s->jenis === 'sempro' ? 'bg-sky-100 text-sky-700' : 'bg-emerald-100 text-emerald-700' }}">
+                            <span class="inline-block px-2.5 py-0.5 rounded-lg text-[10px] font-bold uppercase {{ $s->jenis === 'sempro' ? 'bg-blue-100 text-blue-700' : 'bg-indigo-100 text-indigo-700' }}">
                                 {{ $s->jenis === 'sempro' ? 'Sempro' : 'Sidang Akhir' }}
                             </span>
                             <p class="font-bold text-slate-800 mt-1 line-clamp-1">{{ $s->tugasAkhir->judul }}</p>
@@ -71,9 +71,9 @@
                             <p><strong>2:</strong> {{ $s->penguji2->nama_lengkap ?? '-' }}</p>
                         </td>
                         <td class="px-6 py-4">
-                            <span class="inline-block px-2 py-1 text-[10px] font-bold rounded-lg uppercase
+                            <span class="inline-block px-2.5 py-1 text-[10px] font-bold rounded-lg uppercase
                                 {{ $s->status === 'lulus' ? 'bg-emerald-100 text-emerald-700' : '' }}
-                                {{ $s->status === 'dijadwalkan' ? 'bg-sky-100 text-sky-700' : '' }}
+                                {{ $s->status === 'dijadwalkan' ? 'bg-blue-100 text-blue-700' : '' }}
                                 {{ $s->status === 'menunggu_jadwal' ? 'bg-amber-100 text-amber-700' : '' }}
                             ">
                                 {{ str_replace('_', ' ', $s->status) }}
@@ -83,7 +83,7 @@
                             @endif
                         </td>
                         <td class="px-6 py-4 text-center">
-                            <a href="{{ route('sidang.show', $s->id) }}" class="inline-flex items-center px-3 py-1.5 bg-slate-100 hover:bg-sky-600 hover:text-white text-slate-700 font-bold rounded-xl text-xs transition">
+                            <a href="{{ route('sidang.show', $s->id) }}" class="inline-flex items-center px-3 py-1.5 bg-blue-50 hover:bg-blue-600 hover:text-white text-blue-700 font-bold rounded-xl text-xs transition shadow-sm">
                                 <i class="fa-solid fa-calendar-check mr-1.5"></i> Detail / Nilai
                             </a>
                         </td>

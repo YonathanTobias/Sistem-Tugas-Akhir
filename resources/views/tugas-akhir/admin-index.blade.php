@@ -13,10 +13,10 @@
                     <i class="fa-solid fa-magnifying-glass text-xs"></i>
                 </span>
                 <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari judul, nama, atau NIM..."
-                    class="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-emerald-500">
+                    class="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-blue-500">
             </div>
 
-            <select name="status" onchange="this.form.submit()" class="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-emerald-500">
+            <select name="status" onchange="this.form.submit()" class="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:outline-none focus:border-blue-500">
                 <option value="">-- Semua Status --</option>
                 <option value="pengajuan" {{ request('status') === 'pengajuan' ? 'selected' : '' }}>Pengajuan Baru</option>
                 <option value="disetujui" {{ request('status') === 'disetujui' ? 'selected' : '' }}>Disetujui</option>
@@ -25,7 +25,7 @@
                 <option value="ditolak" {{ request('status') === 'ditolak' ? 'selected' : '' }}>Ditolak</option>
             </select>
 
-            <button type="submit" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-bold transition">
+            <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition shadow-sm">
                 Filter
             </button>
             @if(request()->hasAny(['search', 'status']))
@@ -53,10 +53,10 @@
                         <td class="px-6 py-4">
                             <div class="font-bold text-slate-900 text-sm">{{ $ta->mahasiswa->nama_lengkap }}</div>
                             <div class="text-slate-400 font-mono">{{ $ta->mahasiswa->nim }}</div>
-                            <div class="text-[11px] text-emerald-600 font-semibold">{{ $ta->mahasiswa->prodi->nama_prodi ?? 'TI' }}</div>
+                            <div class="text-[11px] text-blue-600 font-semibold">{{ $ta->mahasiswa->prodi->nama_prodi ?? 'Prodi' }}</div>
                         </td>
                         <td class="px-6 py-4 max-w-md">
-                            <a href="{{ route('tugas-akhir.show', $ta->id) }}" class="font-bold text-slate-800 hover:text-emerald-600 line-clamp-2 transition leading-snug">
+                            <a href="{{ route('tugas-akhir.show', $ta->id) }}" class="font-bold text-slate-800 hover:text-blue-600 line-clamp-2 transition leading-snug">
                                 {{ $ta->judul }}
                             </a>
                             <span class="inline-block mt-1 px-2 py-0.5 bg-slate-100 text-slate-600 rounded text-[10px] font-semibold">
@@ -77,14 +77,14 @@
                             <span class="inline-block px-2.5 py-1 text-[11px] font-bold rounded-lg uppercase
                                 {{ $ta->status === 'disetujui' || $ta->status === 'lulus_sidang' ? 'bg-emerald-100 text-emerald-700' : '' }}
                                 {{ $ta->status === 'pengajuan' ? 'bg-amber-100 text-amber-700' : '' }}
-                                {{ $ta->status === 'bimbingan_skripsi' || $ta->status === 'bimbingan_proposal' ? 'bg-sky-100 text-sky-700' : '' }}
+                                {{ $ta->status === 'bimbingan_skripsi' || $ta->status === 'bimbingan_proposal' ? 'bg-blue-100 text-blue-700' : '' }}
                                 {{ $ta->status === 'ditolak' ? 'bg-rose-100 text-rose-700' : '' }}
                             ">
                                 {{ str_replace('_', ' ', $ta->status) }}
                             </span>
                         </td>
                         <td class="px-6 py-4 text-center">
-                            <a href="{{ route('tugas-akhir.show', $ta->id) }}" class="inline-flex items-center px-3 py-1.5 bg-slate-100 hover:bg-emerald-600 hover:text-white text-slate-700 font-bold rounded-xl text-xs transition">
+                            <a href="{{ route('tugas-akhir.show', $ta->id) }}" class="inline-flex items-center px-3 py-1.5 bg-blue-50 hover:bg-blue-600 hover:text-white text-blue-700 font-bold rounded-xl text-xs transition shadow-sm">
                                 <i class="fa-solid fa-eye mr-1.5"></i> Detail / Plot
                             </a>
                         </td>

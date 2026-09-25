@@ -9,10 +9,10 @@
     <div class="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
             <h2 class="text-xl font-black text-slate-800">Pengumuman & Edaran Akademik</h2>
-            <p class="text-xs text-slate-500 mt-1">Informasi penting mengenai jadwal tugas akhir, seminar, dan yudisium.</p>
+            <p class="text-xs text-slate-500 mt-1">Informasi penting mengenai jadwal tugas akhir, seminar, dan yudisium STIKes Panti Waluya.</p>
         </div>
         @if(auth()->user()->isAdmin())
-        <button @click="modalAdd = true" class="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-xs shadow-md shadow-emerald-600/30 transition">
+        <button @click="modalAdd = true" class="px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-xs shadow-md shadow-blue-600/30 transition">
             <i class="fa-solid fa-bullhorn mr-1.5"></i> Buat Pengumuman
         </button>
         @endif
@@ -21,16 +21,16 @@
     <!-- Announcement List -->
     <div class="space-y-4">
         @forelse($pengumumans as $p)
-        <div class="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm space-y-3">
+        <div class="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm space-y-3 hover:shadow-md transition">
             
             <div class="flex items-center justify-between border-b border-slate-100 pb-3">
                 <div class="flex items-center gap-2">
                     @if($p->is_pinned)
                     <span class="px-2.5 py-1 rounded-lg bg-amber-100 text-amber-800 font-bold text-[10px] uppercase flex items-center gap-1">
-                        <i class="fa-solid fa-thumbtack text-amber-600"></i> Pinned
+                        <i class="fa-solid fa-thumbtack text-amber-600 text-[10px]"></i> Pinned
                     </span>
                     @endif
-                    <span class="px-2.5 py-1 rounded-lg bg-sky-100 text-sky-700 font-bold text-[10px] uppercase">
+                    <span class="px-2.5 py-1 rounded-lg bg-blue-100 text-blue-700 font-bold text-[10px] uppercase">
                         {{ $p->kategori }}
                     </span>
                     <span class="text-xs text-slate-400">Target: <strong class="uppercase font-semibold text-slate-600">{{ $p->target_role }}</strong></span>
@@ -42,7 +42,7 @@
                     <form action="{{ route('pengumuman.destroy', $p->id) }}" method="POST" onsubmit="return confirm('Hapus pengumuman ini?')">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="text-slate-400 hover:text-rose-500 p-1" title="Hapus">
+                        <button type="submit" class="text-slate-400 hover:text-rose-500 p-1 transition" title="Hapus">
                             <i class="fa-solid fa-trash-can text-xs"></i>
                         </button>
                     </form>
@@ -56,8 +56,8 @@
             </div>
 
             <div class="pt-2 text-[11px] text-slate-400 flex items-center gap-1">
-                <i class="fa-solid fa-user-circle"></i>
-                <span>Diterbitkan oleh: <strong class="text-slate-700">{{ $p->author->name ?? 'Admin Prodi' }}</strong></span>
+                <i class="fa-solid fa-user-circle text-slate-400"></i>
+                <span>Diterbitkan oleh: <strong class="text-slate-700">{{ $p->author->name ?? 'Admin STIKes' }}</strong></span>
             </div>
 
         </div>
@@ -88,22 +88,22 @@
                 @csrf
                 <div>
                     <label class="block font-bold text-slate-700 uppercase mb-1">Judul Pengumuman *</label>
-                    <input type="text" name="judul" required placeholder="misal: Batas Akhir Upload Berkas Yudisium" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl">
+                    <input type="text" name="judul" required placeholder="misal: Batas Akhir Upload Berkas Yudisium" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500">
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block font-bold text-slate-700 uppercase mb-1">Kategori *</label>
-                        <select name="kategori" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-bold">
+                        <select name="kategori" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-bold focus:outline-none focus:border-blue-500">
                             <option value="Tugas Akhir">Tugas Akhir</option>
                             <option value="Seminar & Sidang">Seminar & Sidang</option>
                             <option value="Yudisium">Yudisium</option>
-                            <option value="Umum">Umum</option>
+                            <option value="Akademik Umum">Akademik Umum</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block font-bold text-slate-700 uppercase mb-1">Target Pengguna *</label>
-                        <select name="target_role" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-bold">
+                        <label class="block font-bold text-slate-700 uppercase mb-1">Target Sasaran *</label>
+                        <select name="target_role" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-bold focus:outline-none focus:border-blue-500">
                             <option value="all">Semua Pengguna</option>
                             <option value="mahasiswa">Khusus Mahasiswa</option>
                             <option value="dosen">Khusus Dosen</option>
@@ -113,19 +113,19 @@
 
                 <div>
                     <label class="block font-bold text-slate-700 uppercase mb-1">Isi Pengumuman *</label>
-                    <textarea name="konten" rows="4" required placeholder="Tuliskan isi pengumuman secara rinci..." class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"></textarea>
+                    <textarea name="konten" rows="5" required placeholder="Tuliskan isi pengumuman lengkap..." class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500"></textarea>
                 </div>
 
                 <div class="pt-2">
                     <label class="flex items-center gap-2 cursor-pointer font-bold text-slate-700">
-                        <input type="checkbox" name="is_pinned" value="1" class="w-4 h-4 text-emerald-600 rounded">
-                        <span>Pin pengumuman ini di bagian paling atas</span>
+                        <input type="checkbox" name="is_pinned" value="1" class="w-4 h-4 text-blue-600 rounded">
+                        <span>Sematkan / Pin Pengumuman di Atas (Prioritas)</span>
                     </label>
                 </div>
 
                 <div class="pt-3 flex justify-end gap-2 border-t border-slate-100">
                     <button type="button" @click="modalAdd = false" class="px-4 py-2 text-slate-500 font-bold">Batal</button>
-                    <button type="submit" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl shadow">Terbitkan</button>
+                    <button type="submit" class="px-5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl shadow-md shadow-blue-600/30 transition">Terbitkan</button>
                 </div>
             </form>
         </div>
