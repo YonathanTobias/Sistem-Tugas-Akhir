@@ -44,14 +44,14 @@
             <form action="{{ route('login.post') }}" method="POST" class="space-y-4">
                 @csrf
                 <div>
-                    <label for="login" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Email / NIM / NIDN</label>
+                    <label for="login" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Alamat Email</label>
                     <div class="relative">
                         <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-500">
-                            <i class="fa-solid fa-user text-sm"></i>
+                            <i class="fa-solid fa-envelope text-sm"></i>
                         </span>
                         <input type="text" name="login" id="login" required autofocus
                             value="{{ old('login') }}"
-                            placeholder="misal: admin.prodi@stikespantiwaluya.ac.id"
+                            placeholder="nama@stikespantiwaluya.ac.id"
                             class="w-full pl-10 pr-4 py-3 bg-slate-950 border border-slate-700/80 rounded-xl text-white text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 placeholder-slate-500 transition">
                     </div>
                 </div>

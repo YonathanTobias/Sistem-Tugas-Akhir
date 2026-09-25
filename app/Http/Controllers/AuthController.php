@@ -40,7 +40,7 @@ class AuthController extends Controller
         }
 
         return back()->withErrors([
-            'login' => 'Email/NIM/NIDN atau password yang Anda masukkan salah.',
+            'login' => 'Email atau password yang Anda masukkan salah.',
         ])->onlyInput('login');
     }
 

@@ -91,11 +91,11 @@
 
                 <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label class="block font-bold text-slate-700 uppercase mb-1">NIDN (Username Login) *</label>
-                        <input type="text" name="nidn" required placeholder="misal: 0012058001" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500">
+                        <label class="block font-bold text-slate-700 uppercase mb-1">NIDN (Nomor Induk Dosen) *</label>
+                        <input type="text" name="nidn" required placeholder="misal: 0712048001" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500">
                     </div>
                     <div>
-                        <label class="block font-bold text-slate-700 uppercase mb-1">NIP</label>
+                        <label class="block font-bold text-slate-700 uppercase mb-1">NIP (Opsional)</label>
                         <input type="text" name="nip" placeholder="misal: 19800512..." class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500">
                     </div>
                 </div>
