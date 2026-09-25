@@ -69,15 +69,26 @@ class DatabaseSeeder extends Seeder
             'is_aktif' => true,
         ]);
 
-        // 3. User Admin Tunggal (Administrator Sistem)
-        $userAdmin = User::create([
-            'name' => 'Administrator STIKes Panti Waluya',
-            'username' => 'admin',
-            'email' => 'admin@stikespantiwaluya.ac.id',
+        // 3.a. Super Admin IT
+        $userAdminIT = User::create([
+            'name' => 'Super Admin IT STIKes Panti Waluya',
+            'username' => 'admin_it',
+            'email' => 'it@stikespantiwaluya.ac.id',
             'password' => Hash::make('password'),
-            'role' => 'admin',
-            'prodi_id' => $prodiKep->id,
+            'role' => 'admin_it',
             'phone' => '0341369003',
+            'is_active' => true,
+        ]);
+
+        // 3.b. Admin Program Studi
+        $userAdminProdi = User::create([
+            'name' => 'Admin Program Studi',
+            'username' => 'admin_prodi',
+            'email' => 'admin.prodi@stikespantiwaluya.ac.id',
+            'password' => Hash::make('password'),
+            'role' => 'admin_prodi',
+            'prodi_id' => $prodiKep->id,
+            'phone' => '081233445511',
             'is_active' => true,
         ]);
 
@@ -302,7 +313,7 @@ class DatabaseSeeder extends Seeder
             'file_path' => 'uploads/yudisium/sample_perpus.pdf',
             'status' => 'valid',
             'catatan_validator' => 'Bebas pustaka terverifikasi oleh Perpustakaan STIKes.',
-            'verified_by' => $userAdmin->id,
+            'verified_by' => $userAdminProdi->id,
             'verified_at' => now()->subDays(3),
         ]);
 
@@ -312,7 +323,7 @@ class DatabaseSeeder extends Seeder
             'file_path' => 'uploads/yudisium/sample_keuangan.pdf',
             'status' => 'valid',
             'catatan_validator' => 'Biaya pendidikan dan administrasi yudisium lunas.',
-            'verified_by' => $userAdmin->id,
+            'verified_by' => $userAdminProdi->id,
             'verified_at' => now()->subDays(3),
         ]);
 
@@ -322,7 +333,7 @@ class DatabaseSeeder extends Seeder
             'file_path' => 'uploads/yudisium/sample_lab.pdf',
             'status' => 'valid',
             'catatan_validator' => 'Bebas tanggungan alat lab keperawatan & phantom klinik.',
-            'verified_by' => $userAdmin->id,
+            'verified_by' => $userAdminProdi->id,
             'verified_at' => now()->subDays(3),
         ]);
 
@@ -332,13 +343,13 @@ class DatabaseSeeder extends Seeder
             'file_path' => 'uploads/yudisium/sample_toefl.pdf',
             'status' => 'valid',
             'catatan_validator' => 'Skor TOEFL 525 (Memenuhi Standar).',
-            'verified_by' => $userAdmin->id,
+            'verified_by' => $userAdminProdi->id,
             'verified_at' => now()->subDays(3),
         ]);
 
         // 12. Pengumuman Resmi STIKes Panti Waluya Malang
         Pengumuman::create([
-            'user_id' => $userAdmin->id,
+            'user_id' => $userAdminIT->id,
             'judul' => 'Pendaftaran Yudisium Gelombang I TA 2026/2027 STIKes Panti Waluya Telah Dibuka',
             'konten' => 'Diberitahukan kepada mahasiswa yang telah menyelesaikan ujian sidang skripsi untuk segera mengunggah berkas bebas laboratorium dan perpustakaan.',
             'kategori' => 'Yudisium',
@@ -347,7 +358,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Pengumuman::create([
-            'user_id' => $userAdmin->id,
+            'user_id' => $userAdminIT->id,
             'judul' => 'Jadwal Pengambilan Sumpah Profesi & Kelengkapan Berkas Ijazah',
             'konten' => 'Bagi calon wisudawan yang telah lulus yudisium, mohon memeriksa kebenaran data nama dan NIK pada Surat Keterangan Lulus (SKL) digital.',
             'kategori' => 'Umum',

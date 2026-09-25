@@ -187,8 +187,10 @@
                         <p class="text-xs font-bold text-white truncate">{{ auth()->user()->name }}</p>
                         <p class="text-[10px] text-emerald-400 capitalize font-medium flex items-center gap-1">
                             <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                            @if(auth()->user()->isAdmin())
-                                Administrator
+                            @if(auth()->user()->isAdminIT())
+                                Super Admin IT
+                            @elseif(auth()->user()->isAdminProdi())
+                                Admin Prodi
                             @elseif(auth()->user()->isDosen())
                                 Dosen
                             @elseif(auth()->user()->isMahasiswa())
@@ -225,12 +227,12 @@
 
                 <div class="flex items-center gap-3">
                     
-                    @if(auth()->user()->isAdmin())
-                    <!-- Quick Prodi Scope Switcher Dropdown (Admin) -->
+                    @if(auth()->user()->isAdminIT())
+                    <!-- Quick Prodi Scope Switcher Dropdown (Super Admin IT) -->
                     <form action="{{ route('master.prodi.switch') }}" method="POST" class="hidden sm:flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs">
                         @csrf
                         <span class="text-slate-400 font-bold px-2 flex items-center gap-1">
-                            <i class="fa-solid fa-layer-group text-blue-500"></i> Filter Prodi:
+                            <i class="fa-solid fa-layer-group text-blue-500"></i> Scope Prodi:
                         </span>
                         <select name="prodi_id" onchange="this.form.submit()" class="bg-white border-0 py-1 px-2.5 rounded-lg font-bold text-slate-800 text-xs focus:ring-1 focus:ring-blue-500 cursor-pointer shadow-sm">
                             <option value="all" {{ !session('active_prodi_id') ? 'selected' : '' }}>🏢 Semua Program Studi (Global)</option>
@@ -251,12 +253,15 @@
                     <!-- User Role Badge & Logout Button in Topbar -->
                     <div class="flex items-center gap-2.5">
                         <span class="px-2.5 py-1 text-xs font-bold rounded-lg uppercase tracking-wide
-                            {{ auth()->user()->isAdmin() ? 'bg-blue-100 text-blue-700' : '' }}
+                            {{ auth()->user()->isAdminIT() ? 'bg-rose-100 text-rose-700' : '' }}
+                            {{ auth()->user()->isAdminProdi() ? 'bg-indigo-100 text-indigo-700' : '' }}
                             {{ auth()->user()->isDosen() ? 'bg-sky-100 text-sky-700' : '' }}
                             {{ auth()->user()->isMahasiswa() ? 'bg-emerald-100 text-emerald-700' : '' }}
                         ">
-                            @if(auth()->user()->isAdmin())
-                                👑 Admin
+                            @if(auth()->user()->isAdminIT())
+                                👑 Super Admin IT
+                            @elseif(auth()->user()->isAdminProdi())
+                                🏢 Admin Prodi
                             @elseif(auth()->user()->isDosen())
                                 🩺 Dosen
                             @elseif(auth()->user()->isMahasiswa())
