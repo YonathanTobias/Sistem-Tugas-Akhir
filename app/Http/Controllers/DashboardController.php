@@ -101,7 +101,7 @@ class DashboardController extends Controller
             }
 
             $ta = TugasAkhir::where('mahasiswa_id', $mahasiswa->id)
-                ->with(['pembimbing1', 'pembimbing2', 'bimbingans', 'sidangs'])
+                ->with(['pembimbing1', 'pembimbing2', 'bimbingans', 'sidangs.nilaiSidangs'])
                 ->first();
 
             $pendaftaranYudisium = PendaftaranYudisium::where('mahasiswa_id', $mahasiswa->id)
@@ -109,9 +109,25 @@ class DashboardController extends Controller
                 ->first();
 
             $totalBimbinganAcc = $ta ? $ta->bimbingans()->where('status', 'acc')->count() : 0;
-            $minBimbingan = 8; // Standar minimal 8x bimbingan ACC
+            $minBimbingan = $mahasiswa->prodi->min_bimbingan_acc ?? 8;
 
-            return view('dashboard.mahasiswa', compact('mahasiswa', 'ta', 'pendaftaranYudisium', 'totalBimbinganAcc', 'minBimbingan', 'pengumumans'));
+            $sempro = $ta ? $ta->sidangs->where('jenis', 'sempro')->first() : null;
+            $sidangAkhir = $ta ? $ta->sidangs->where('jenis', 'sidang_akhir')->first() : null;
+            $totalSyaratYudisium = \App\Models\SyaratYudisium::count();
+            $validBerkasCount = $pendaftaranYudisium ? $pendaftaranYudisium->berkasYudisiums()->where('status', 'valid')->count() : 0;
+
+            return view('dashboard.mahasiswa', compact(
+                'mahasiswa', 
+                'ta', 
+                'pendaftaranYudisium', 
+                'totalBimbinganAcc', 
+                'minBimbingan', 
+                'sempro',
+                'sidangAkhir',
+                'totalSyaratYudisium',
+                'validBerkasCount',
+                'pengumumans'
+            ));
         }
 
         return view('dashboard.default');
