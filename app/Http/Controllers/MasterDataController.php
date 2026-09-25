@@ -14,9 +14,13 @@ use App\Models\User;
 
 class MasterDataController extends Controller
 {
-    // Switch Active Prodi Scope
+    // Switch Active Prodi Scope (Khusus Super Admin IT)
     public function switchProdi(Request $request)
     {
+        if (!auth()->user()->isAdminIT()) {
+            abort(403, 'Akses ditolak. Hanya Super Admin IT yang berhak mengubah scope program studi.');
+        }
+
         $prodiId = $request->get('prodi_id');
         if ($prodiId && $prodiId !== 'all') {
             $prodi = Prodi::findOrFail($prodiId);
@@ -28,15 +32,23 @@ class MasterDataController extends Controller
         return back()->with('success', 'Fokus Program Studi berhasil diubah.');
     }
 
-    // Program Studi Setting
+    // Program Studi Setting (Khusus Super Admin IT)
     public function prodiIndex()
     {
+        if (!auth()->user()->isAdminIT()) {
+            abort(403, 'Akses ditolak. Pengaturan multi-prodi hanya dapat diakses oleh Super Admin IT.');
+        }
+
         $prodis = Prodi::withCount(['mahasiswas', 'dosens'])->get();
         return view('master.prodi', compact('prodis'));
     }
 
     public function prodiUpdate(Request $request, $id)
     {
+        if (!auth()->user()->isAdminIT()) {
+            abort(403, 'Akses ditolak. Pengaturan prodi hanya dapat diubah oleh Super Admin IT.');
+        }
+
         $prodi = Prodi::findOrFail($id);
 
         $validated = $request->validate([
