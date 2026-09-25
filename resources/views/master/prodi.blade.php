@@ -77,7 +77,7 @@
                     <div>
                         <span class="text-[10px] text-slate-400 font-bold uppercase block">Ketua Program Studi (Kaprodi):</span>
                         <p class="font-bold text-slate-900">{{ $prodi->kaprodi_nama ?? 'Belum Diatur' }}</p>
-                        <p class="text-[10px] text-slate-500 font-mono">NIDN. {{ $prodi->kaprodi_nidn ?? '-' }}</p>
+                        <p class="text-[10px] text-slate-500 font-mono">NIDN/NIP: {{ $prodi->kaprodi_nip ?? '-' }}</p>
                     </div>
 
                     <div class="grid grid-cols-2 gap-2 pt-1">
@@ -109,8 +109,8 @@
                         </div>
 
                         <div>
-                            <label class="block font-bold text-slate-700 uppercase mb-1">NIDN Kaprodi</label>
-                            <input type="text" name="kaprodi_nidn" value="{{ $prodi->kaprodi_nidn }}" placeholder="misal: 0712048001" class="w-full px-3 py-1.5 bg-white border border-slate-200 rounded-xl font-mono focus:outline-none focus:border-blue-500">
+                            <label class="block font-bold text-slate-700 uppercase mb-1">NIDN / NIP Kaprodi</label>
+                            <input type="text" name="kaprodi_nip" value="{{ $prodi->kaprodi_nip }}" placeholder="misal: 0712048001" class="w-full px-3 py-1.5 bg-white border border-slate-200 rounded-xl font-mono focus:outline-none focus:border-blue-500">
                         </div>
 
                         <div class="grid grid-cols-2 gap-2">

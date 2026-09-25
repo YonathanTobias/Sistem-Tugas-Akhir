@@ -87,6 +87,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/prodi/switch', [MasterDataController::class, 'switchProdi'])->name('prodi.switch');
         Route::get('/prodi', [MasterDataController::class, 'prodiIndex'])->name('prodi');
         Route::patch('/prodi/{id}', [MasterDataController::class, 'prodiUpdate'])->name('prodi.update');
+        Route::patch('/prodi/{id}/setting', [MasterDataController::class, 'prodiUpdate'])->name('prodi.update-setting');
         Route::get('/dosen', [MasterDataController::class, 'dosenIndex'])->name('dosen');
         Route::post('/dosen', [MasterDataController::class, 'dosenStore'])->name('dosen.store');
         Route::get('/mahasiswa', [MasterDataController::class, 'mahasiswaIndex'])->name('mahasiswa');

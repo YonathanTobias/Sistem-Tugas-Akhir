@@ -40,16 +40,22 @@ class MasterDataController extends Controller
         $prodi = Prodi::findOrFail($id);
 
         $validated = $request->validate([
-            'nama_prodi' => 'required|string|max:100',
-            'jenjang' => 'required|string|max:10',
+            'nama_prodi' => 'nullable|string|max:100',
+            'jenjang' => 'nullable|string|max:10',
             'kaprodi_nama' => 'required|string|max:255',
             'kaprodi_nip' => 'nullable|string|max:50',
+            'kaprodi_nidn' => 'nullable|string|max:50',
             'gelar_lulusan' => 'required|string|max:30',
             'format_sk_prefix' => 'required|string|max:50',
             'min_bimbingan_acc' => 'required|integer|min:1',
         ]);
 
-        $prodi->update($validated);
+        if (empty($validated['kaprodi_nip']) && !empty($validated['kaprodi_nidn'])) {
+            $validated['kaprodi_nip'] = $validated['kaprodi_nidn'];
+        }
+        unset($validated['kaprodi_nidn']);
+
+        $prodi->update(array_filter($validated, fn($val) => !is_null($val)));
 
         return back()->with('success', 'Pengaturan Program Studi ' . $prodi->nama_prodi . ' berhasil diperbarui!');
     }
