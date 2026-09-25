@@ -51,7 +51,7 @@
                         </span>
                         <input type="text" name="login" id="login" required autofocus
                             value="{{ old('login') }}"
-                            placeholder="misal: 220101001 atau admin.kep@stikespantiwaluya.ac.id"
+                            placeholder="misal: admin@stikespantiwaluya.ac.id"
                             class="w-full pl-10 pr-4 py-3 bg-slate-950 border border-slate-700/80 rounded-xl text-white text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 placeholder-slate-500 transition">
                     </div>
                 </div>
@@ -81,39 +81,24 @@
                 </button>
             </form>
 
-            <!-- Quick Demo Accounts Switcher -->
+            <!-- Quick Demo Accounts Switcher (1 Admin, 1 Dosen, 1 Mahasiswa) -->
             <div class="mt-8 pt-6 border-t border-slate-800/80">
-                <p class="text-[11px] font-bold uppercase tracking-wider text-slate-400 text-center mb-3">Akun Demo Uji Coba Cepat (1-Klik):</p>
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
-                    <button type="button" @click="fillCredentials('it@stikespantiwaluya.ac.id', 'password')"
+                <p class="text-[11px] font-bold uppercase tracking-wider text-slate-400 text-center mb-3">Akun Uji Coba Cepat (1-Klik):</p>
+                <div class="grid grid-cols-3 gap-2 text-xs">
+                    <button type="button" @click="fillCredentials('admin@stikespantiwaluya.ac.id', 'password')"
                         class="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-left border border-slate-700 text-slate-300 hover:text-white transition">
-                        <div class="font-bold text-rose-400">👑 Admin IT / Pusat</div>
-                        <div class="text-[10px] text-slate-400 truncate">it@stikespantiwaluya.ac.id</div>
-                    </button>
-                    <button type="button" @click="fillCredentials('admin.kep@stikespantiwaluya.ac.id', 'password')"
-                        class="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-left border border-slate-700 text-slate-300 hover:text-white transition">
-                        <div class="font-bold text-blue-400">🩺 Admin Keperawatan</div>
-                        <div class="text-[10px] text-slate-400 truncate">admin.kep@stikespantiwaluya.ac.id</div>
-                    </button>
-                    <button type="button" @click="fillCredentials('admin.far@stikespantiwaluya.ac.id', 'password')"
-                        class="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-left border border-slate-700 text-slate-300 hover:text-white transition">
-                        <div class="font-bold text-indigo-400">💊 Admin S1 Farmasi</div>
-                        <div class="text-[10px] text-slate-400 truncate">admin.far@stikespantiwaluya.ac.id</div>
-                    </button>
-                    <button type="button" @click="fillCredentials('admin.mik@stikespantiwaluya.ac.id', 'password')"
-                        class="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-left border border-slate-700 text-slate-300 hover:text-white transition">
-                        <div class="font-bold text-cyan-400">📋 Admin D4 MIK</div>
-                        <div class="text-[10px] text-slate-400 truncate">admin.mik@stikespantiwaluya.ac.id</div>
+                        <div class="font-bold text-blue-400 truncate">👑 Admin</div>
+                        <div class="text-[10px] text-slate-400 truncate">admin@...</div>
                     </button>
                     <button type="button" @click="fillCredentials('dosen1@stikespantiwaluya.ac.id', 'password')"
                         class="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-left border border-slate-700 text-slate-300 hover:text-white transition">
-                        <div class="font-bold text-sky-400">👨‍🏫 Dosen Pembimbing</div>
-                        <div class="text-[10px] text-slate-400 truncate">dosen1@stikespantiwaluya.ac.id</div>
+                        <div class="font-bold text-sky-400 truncate">👨‍🏫 Dosen</div>
+                        <div class="text-[10px] text-slate-400 truncate">dosen1@...</div>
                     </button>
                     <button type="button" @click="fillCredentials('mahasiswa@stikespantiwaluya.ac.id', 'password')"
                         class="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-left border border-slate-700 text-slate-300 hover:text-white transition">
-                        <div class="font-bold text-emerald-400">🎓 Mahasiswa (Maria)</div>
-                        <div class="text-[10px] text-slate-400 truncate">mahasiswa@stikespantiwaluya.ac.id</div>
+                        <div class="font-bold text-emerald-400 truncate">🎓 Mahasiswa</div>
+                        <div class="text-[10px] text-slate-400 truncate">mahasiswa@...</div>
                     </button>
                 </div>
             </div>

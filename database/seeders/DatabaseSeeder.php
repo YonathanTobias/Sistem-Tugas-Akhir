@@ -69,48 +69,15 @@ class DatabaseSeeder extends Seeder
             'is_aktif' => true,
         ]);
 
-        // 3. User Admin IT / Super Admin Pusat
-        $userAdminIT = User::create([
-            'name' => 'Administrator IT & BAAK Pusat',
-            'username' => 'admin_it',
-            'email' => 'it@stikespantiwaluya.ac.id',
+        // 3. User Admin Tunggal (Administrator Sistem)
+        $userAdmin = User::create([
+            'name' => 'Administrator STIKes Panti Waluya',
+            'username' => 'admin',
+            'email' => 'admin@stikespantiwaluya.ac.id',
             'password' => Hash::make('password'),
-            'role' => 'admin_it',
-            'phone' => '0341369003',
-            'is_active' => true,
-        ]);
-
-        // 3.b. User Admin Program Studi (3 Prodi Terpisah)
-        $userAdminKep = User::create([
-            'name' => 'Admin Prodi S1 Keperawatan',
-            'username' => 'admin_kep',
-            'email' => 'admin.kep@stikespantiwaluya.ac.id',
-            'password' => Hash::make('password'),
-            'role' => 'admin_prodi',
+            'role' => 'admin',
             'prodi_id' => $prodiKep->id,
-            'phone' => '081233445511',
-            'is_active' => true,
-        ]);
-
-        $userAdminFar = User::create([
-            'name' => 'Admin Prodi S1 Farmasi',
-            'username' => 'admin_far',
-            'email' => 'admin.far@stikespantiwaluya.ac.id',
-            'password' => Hash::make('password'),
-            'role' => 'admin_prodi',
-            'prodi_id' => $prodiFar->id,
-            'phone' => '081233445522',
-            'is_active' => true,
-        ]);
-
-        $userAdminMik = User::create([
-            'name' => 'Admin Prodi D4 Rekam Medis (MIK)',
-            'username' => 'admin_mik',
-            'email' => 'admin.mik@stikespantiwaluya.ac.id',
-            'password' => Hash::make('password'),
-            'role' => 'admin_prodi',
-            'prodi_id' => $prodiMik->id,
-            'phone' => '081233445533',
+            'phone' => '0341369003',
             'is_active' => true,
         ]);
 
@@ -252,88 +219,90 @@ class DatabaseSeeder extends Seeder
             'sidang_id' => $sidang->id,
             'dosen_id' => $dosen1->id,
             'peran' => 'penguji1',
-            'nilai_presentasi' => 96,
-            'nilai_materi' => 94,
-            'nilai_tanya_jawab' => 93,
-            'total_nilai' => 94.10,
-            'catatan' => 'Sangat menguasai implikasi keperawatan dan metodologi riset kesehatan.',
+            'nilai_presentasi' => 95.0,
+            'nilai_materi' => 94.0,
+            'nilai_tanya_jawab' => 93.0,
+            'total_nilai' => 93.85,
+            'catatan' => 'Pemaparan hasil uji intervensi klinis sangat jelas.',
         ]);
 
-        // 9. Master Syarat Bebas Tanggungan STIKes Panti Waluya
+        NilaiSidang::create([
+            'sidang_id' => $sidang->id,
+            'dosen_id' => $dosen2->id,
+            'peran' => 'penguji2',
+            'nilai_presentasi' => 94.0,
+            'nilai_materi' => 95.0,
+            'nilai_tanya_jawab' => 95.0,
+            'total_nilai' => 94.75,
+            'catatan' => 'Saran penambahan pembahasan efek aromaterapi pada sistem limbik.',
+        ]);
+
+        // 9. Master Syarat Bebas Tanggungan Yudisium
         $syaratPerpus = SyaratYudisium::create([
-            'nama_syarat' => 'Surat Bebas Perpustakaan & Bukti Upload Repositori Karya Ilmiah',
+            'nama_syarat' => 'Surat Bebas Pustaka & Penyerahan Naskah Skripsi ke Perpustakaan STIKes',
             'kode_syarat' => 'BEBAS_PERPUS',
             'kategori' => 'perpustakaan',
-            'deskripsi' => 'Bukti penyerahan hardcopy skripsi bertandatangan penguji & upload repository STIKes Panti Waluya.',
+            'deskripsi' => 'Unggah scan surat keterangan bebas pinjaman buku dan bukti upload softcopy skripsi ke repositori STIKes Panti Waluya Malang.',
             'is_wajib' => true,
         ]);
 
         $syaratKeuangan = SyaratYudisium::create([
-            'nama_syarat' => 'Surat Bebas Administrasi Keuangan & Lunas SPP/DPP',
+            'nama_syarat' => 'Surat Bebas Tunggakan SPP & Biaya Pendidikan (BAAK / Keuangan)',
             'kode_syarat' => 'BEBAS_KEUANGAN',
             'kategori' => 'keuangan',
-            'deskripsi' => 'Validasi dari Bagian Keuangan STIKes Panti Waluya Malang bahwa tidak ada tunggakan pembayaran.',
+            'deskripsi' => 'Unggah bukti pelunasan biaya kuliah, administrasi ujian, dan biaya yudisium dari bagian keuangan.',
             'is_wajib' => true,
         ]);
 
         $syaratLab = SyaratYudisium::create([
-            'nama_syarat' => 'Surat Bebas Laboratorium Keperawatan & Farmasi',
+            'nama_syarat' => 'Surat Bebas Tanggungan Alat Laboratorium Keperawatan / Farmasi',
             'kode_syarat' => 'BEBAS_LAB',
             'kategori' => 'laboratorium',
-            'deskripsi' => 'Keterangan bebas tanggungan peminjaman alat phantom/lab medis dan laboratorium farmasi.',
+            'deskripsi' => 'Unggah bukti bebas peminjaman alat praktik dan penggantian inventaris lab.',
             'is_wajib' => true,
         ]);
 
         $syaratToefl = SyaratYudisium::create([
-            'nama_syarat' => 'Sertifikat TOEFL / English for Healthcare (Min. Skor 450)',
+            'nama_syarat' => 'Sertifikat TOEFL / English Proficiency Test (Min. Skor 450)',
             'kode_syarat' => 'SERTIFIKAT_TOEFL',
             'kategori' => 'akademik',
-            'deskripsi' => 'Scan sertifikat tes kemampuan bahasa Inggris resmi dari Pusat Bahasa Kampus.',
+            'deskripsi' => 'Unggah scan sertifikat TOEFL resmi dari Language Center kampus atau lembaga terakreditasi.',
             'is_wajib' => true,
         ]);
 
-        $syaratSkpi = SyaratYudisium::create([
-            'nama_syarat' => 'Sertifikat Pelatihan BTCLS / BHD / SKPI Kesehatan',
-            'kode_syarat' => 'SERTIFIKAT_BTCLS_SKPI',
-            'kategori' => 'akademik',
-            'deskripsi' => 'Dokumen sertifikat pelatihan Basic Trauma Cardiac Life Support atau SKPI kemahasiswaan.',
-            'is_wajib' => false,
-        ]);
-
-        // 10. Periode Yudisium STIKes Panti Waluya Malang
+        // 10. Periode Yudisium Aktif
         $periodeYudisium = PeriodeYudisium::create([
-            'nama_periode' => 'Yudisium Sarjana & Diploma STIKes Panti Waluya TA 2026/2027',
+            'nama_periode' => 'Yudisium Sarjana & Diploma Gelombang I TA 2026/2027',
             'tahun_akademik' => '2026/2027',
-            'tgl_buka' => now()->subDays(10),
-            'tgl_tutup' => now()->addDays(20),
-            'tgl_pelaksanaan' => now()->addDays(25),
-            'kuota' => 120,
+            'tgl_buka' => now()->subMonth(),
+            'tgl_tutup' => now()->addMonth(),
+            'tgl_pelaksanaan' => now()->addMonth()->addDays(7),
+            'kuota' => 150,
             'is_aktif' => true,
         ]);
 
-        // 11. Pendaftaran Yudisium Maria Fransiska (Lulus Yudisium & Ber-SKL)
+        // 11. Pendaftaran Yudisium Mahasiswa (Lulus Yudisium & Terbit SKL)
         $pendaftaranYudisium = PendaftaranYudisium::create([
             'mahasiswa_id' => $mhs->id,
             'periode_yudisium_id' => $periodeYudisium->id,
             'tugas_akhir_id' => $ta->id,
-            'nomor_sk' => 'SK-YUD/STIKES-PW/KEP/2026/09/018',
+            'ipk_final' => 3.92,
+            'status' => 'lulus',
+            'nomor_sk' => 'SK-YUD/STIKES-PW/KEP/2026/08/042',
             'tanggal_sk' => now()->subDays(2),
             'tgl_lulus' => now()->subDays(2),
-            'ipk_final' => 3.92,
             'predikat' => 'Dengan Pujian',
-            'status' => 'lulus',
-            'catatan_kelulusan' => 'Memenuhi seluruh persyaratan kelulusan profesi kesehatan dengan predikat Dengan Pujian (Cum Laude).',
             'skl_token' => Str::random(32),
+            'catatan_kelulusan' => 'Dinyatakan Lulus Yudisium Sarjana Keperawatan (S.Kep.) dengan predikat Dengan Pujian (Cum Laude).',
         ]);
 
-        // Berkas Terverifikasi
         BerkasYudisium::create([
             'pendaftaran_yudisium_id' => $pendaftaranYudisium->id,
             'syarat_yudisium_id' => $syaratPerpus->id,
             'file_path' => 'uploads/yudisium/sample_perpus.pdf',
             'status' => 'valid',
-            'catatan_validator' => 'Naskah skripsi dan artikel ilmiah lengkap terunggah di repositori STIKes Panti Waluya.',
-            'verified_by' => $userAdminKep->id,
+            'catatan_validator' => 'Bebas pustaka terverifikasi oleh Perpustakaan STIKes.',
+            'verified_by' => $userAdmin->id,
             'verified_at' => now()->subDays(3),
         ]);
 
@@ -343,7 +312,7 @@ class DatabaseSeeder extends Seeder
             'file_path' => 'uploads/yudisium/sample_keuangan.pdf',
             'status' => 'valid',
             'catatan_validator' => 'Biaya pendidikan dan administrasi yudisium lunas.',
-            'verified_by' => $userAdminKep->id,
+            'verified_by' => $userAdmin->id,
             'verified_at' => now()->subDays(3),
         ]);
 
@@ -353,7 +322,7 @@ class DatabaseSeeder extends Seeder
             'file_path' => 'uploads/yudisium/sample_lab.pdf',
             'status' => 'valid',
             'catatan_validator' => 'Bebas tanggungan alat lab keperawatan & phantom klinik.',
-            'verified_by' => $userAdminKep->id,
+            'verified_by' => $userAdmin->id,
             'verified_at' => now()->subDays(3),
         ]);
 
@@ -363,22 +332,22 @@ class DatabaseSeeder extends Seeder
             'file_path' => 'uploads/yudisium/sample_toefl.pdf',
             'status' => 'valid',
             'catatan_validator' => 'Skor TOEFL 525 (Memenuhi Standar).',
-            'verified_by' => $userAdminKep->id,
+            'verified_by' => $userAdmin->id,
             'verified_at' => now()->subDays(3),
         ]);
 
         // 12. Pengumuman Resmi STIKes Panti Waluya Malang
         Pengumuman::create([
-            'user_id' => $userAdminIT->id,
+            'user_id' => $userAdmin->id,
             'judul' => 'Pendaftaran Yudisium Gelombang I TA 2026/2027 STIKes Panti Waluya Telah Dibuka',
-            'konten' => 'Diberitahukan kepada mahasiswa S1 Keperawatan, S1 Farmasi, dan D4 MIK yang telah menyelesaikan ujian sidang skripsi untuk segera mengunggah berkas bebas laboratorium dan perpustakaan.',
+            'konten' => 'Diberitahukan kepada mahasiswa yang telah menyelesaikan ujian sidang skripsi untuk segera mengunggah berkas bebas laboratorium dan perpustakaan.',
             'kategori' => 'Yudisium',
             'target_role' => 'mahasiswa',
             'is_pinned' => true,
         ]);
 
         Pengumuman::create([
-            'user_id' => $userAdminIT->id,
+            'user_id' => $userAdmin->id,
             'judul' => 'Jadwal Pengambilan Sumpah Profesi & Kelengkapan Berkas Ijazah',
             'konten' => 'Bagi calon wisudawan yang telah lulus yudisium, mohon memeriksa kebenaran data nama dan NIK pada Surat Keterangan Lulus (SKL) digital.',
             'kategori' => 'Umum',
