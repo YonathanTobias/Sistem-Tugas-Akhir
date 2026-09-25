@@ -60,7 +60,7 @@
             <div>
                 <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Peserta Yudisium</p>
                 <h3 class="text-2xl font-black text-slate-800 mt-1">{{ $stats['total_pendaftar_yudisium'] }}</h3>
-                <span class="text-xs text-emerald-600 font-semibold"><i class="fa-solid fa-certificate"></i> {{ $stats['total_yudisium_lulus'] }} Lulus SKL</span>
+                <span class="text-xs text-emerald-600 font-semibold"><i class="fa-solid fa-circle-check"></i> {{ $stats['total_yudisium_lulus'] }} Dinyatakan Lulus</span>
             </div>
             <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl">
                 <i class="fa-solid fa-award"></i>

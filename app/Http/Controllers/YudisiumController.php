@@ -181,8 +181,8 @@ class YudisiumController extends Controller
 
         $validated = $request->validate([
             'status' => 'required|in:lulus,ditolak',
-            'nomor_sk' => 'required_if:status,lulus|nullable|string',
-            'tanggal_sk' => 'required_if:status,lulus|nullable|date',
+            'nomor_sk' => 'nullable|string',
+            'tanggal_sk' => 'nullable|date',
             'tgl_lulus' => 'required_if:status,lulus|nullable|date',
             'predikat' => 'required_if:status,lulus|nullable|in:Dengan Pujian,Sangat Memuaskan,Memuaskan',
             'catatan_kelulusan' => 'nullable|string',
@@ -194,7 +194,7 @@ class YudisiumController extends Controller
             $pendaftaran->tugasAkhir->update(['status' => 'selesai']);
         }
 
-        return back()->with('success', 'Penetapan yudisium & SK kelulusan berhasil disimpan!');
+        return back()->with('success', 'Penetapan hasil kelulusan yudisium berhasil disimpan!');
     }
 
     public function cetakSkl($id)

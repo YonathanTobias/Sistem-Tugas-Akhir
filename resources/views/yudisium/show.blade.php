@@ -23,13 +23,8 @@
                     {{ $pendaftaran->status === 'diajukan' ? 'bg-amber-100 text-amber-700' : '' }}
                     {{ $pendaftaran->status === 'ditolak' ? 'bg-rose-100 text-rose-700' : '' }}
                 ">
-                    {{ strtoupper($pendaftaran->status) }}
+                    {{ $pendaftaran->status === 'lulus' ? 'LULUS YUDISIUM' : strtoupper($pendaftaran->status) }}
                 </span>
-                @if($pendaftaran->status === 'lulus')
-                <a href="{{ route('yudisium.cetak-skl', $pendaftaran->id) }}" target="_blank" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-xs shadow transition">
-                    <i class="fa-solid fa-print mr-1"></i> SKL Digital
-                </a>
-                @endif
             </div>
         </div>
 
@@ -109,10 +104,10 @@
             </div>
         </div>
 
-        <!-- Penetapan SK Kelulusan Yudisium (Khusus Admin / Fakultas) -->
+        <!-- Penetapan Kelulusan Yudisium (Khusus Admin / BAAK / Prodi) -->
         @if(auth()->user()->isAdmin())
         <div class="border-t border-slate-200 pt-6 space-y-4">
-            <h3 class="font-extrabold text-sm text-emerald-900 uppercase tracking-wider">Penetapan SK Yudisium & Penerbitan Kelulusan (Fakultas)</h3>
+            <h3 class="font-extrabold text-sm text-emerald-900 uppercase tracking-wider">Penetapan Hasil Rapat Yudisium</h3>
             
             <form action="{{ route('yudisium.tetapkan-kelulusan', $pendaftaran->id) }}" method="POST" class="bg-emerald-50/50 p-6 rounded-2xl border border-emerald-200 space-y-4">
                 @csrf
@@ -120,16 +115,16 @@
 
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Status Keputusan <span class="text-rose-500">*</span></label>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Hasil Keputusan <span class="text-rose-500">*</span></label>
                         <select name="status" required class="w-full px-3 py-2 bg-white border border-emerald-300 rounded-xl text-xs font-bold text-emerald-900">
-                            <option value="lulus" {{ $pendaftaran->status === 'lulus' ? 'selected' : '' }}>🎉 LULUS YUDISIUM</option>
-                            <option value="ditolak" {{ $pendaftaran->status === 'ditolak' ? 'selected' : '' }}>❌ DITOLAK</option>
+                            <option value="lulus" {{ $pendaftaran->status === 'lulus' ? 'selected' : '' }}>🎉 Dinyatakan LULUS</option>
+                            <option value="ditolak" {{ $pendaftaran->status === 'ditolak' ? 'selected' : '' }}>❌ Ditolak / Ditunda</option>
                         </select>
                     </div>
 
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Nomor SK Yudisium</label>
-                        <input type="text" name="nomor_sk" value="{{ old('nomor_sk', $pendaftaran->nomor_sk ?? 'SK-YUD/FTIK/' . date('Y/m/') . sprintf('%03d', $pendaftaran->id)) }}" placeholder="misal: SK-YUD/2026/042"
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Nomor Berita Acara / SK (Opsional)</label>
+                        <input type="text" name="nomor_sk" value="{{ old('nomor_sk', $pendaftaran->nomor_sk ?? 'SK-YUD/STIKES-PW/' . ($pendaftaran->mahasiswa->prodi->kode_prodi ?? 'PRODI') . '/' . date('Y/m/') . sprintf('%03d', $pendaftaran->id)) }}" placeholder="misal: BA-YUD/2026/01"
                             class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-mono">
                     </div>
 
@@ -145,7 +140,7 @@
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Tanggal SK</label>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Tanggal Rapat Yudisium</label>
                         <input type="date" name="tanggal_sk" value="{{ old('tanggal_sk', $pendaftaran->tanggal_sk ? $pendaftaran->tanggal_sk->format('Y-m-d') : date('Y-m-d')) }}"
                             class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs">
                     </div>
@@ -157,14 +152,14 @@
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Catatan Kelulusan</label>
-                    <input type="text" name="catatan_kelulusan" value="{{ old('catatan_kelulusan', $pendaftaran->catatan_kelulusan) }}" placeholder="Catatan SK atau keterangan khusus..."
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Catatan Hasil Yudisium</label>
+                    <input type="text" name="catatan_kelulusan" value="{{ old('catatan_kelulusan', $pendaftaran->catatan_kelulusan) }}" placeholder="Catatan hasil rapat yudisium..."
                         class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs">
                 </div>
 
                 <div class="text-right pt-2">
                     <button type="submit" class="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-xs shadow-md shadow-emerald-600/30 transition">
-                        <i class="fa-solid fa-stamp mr-1.5"></i> Terbitkan SK Yudisium & SKL
+                        <i class="fa-solid fa-check-double mr-1.5"></i> Simpan Penetapan Yudisium
                     </button>
                 </div>
             </form>

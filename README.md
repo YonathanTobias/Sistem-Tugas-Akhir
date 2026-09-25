@@ -1,6 +1,6 @@
 # 🎓 SIMTA & Yudisium - STIKes Panti Waluya Malang
 
-Sistem Informasi Manajemen Tugas Akhir, Seminar/Sidang Skripsi, dan Yudisium Terpadu dengan Verifikasi SKL Digital Berbasis QR-Code untuk **Sekolah Tinggi Ilmu Kesehatan (STIKes) Panti Waluya Malang**.
+Sistem Informasi Manajemen Tugas Akhir, Seminar/Sidang Skripsi, dan Pendaftaran Yudisium Bebas Tanggungan Terpadu untuk **Sekolah Tinggi Ilmu Kesehatan (STIKes) Panti Waluya Malang**.
 
 ---
 
@@ -12,12 +12,11 @@ Sistem Informasi Manajemen Tugas Akhir, Seminar/Sidang Skripsi, dan Yudisium Ter
   - D4 Manajemen Informasi Kesehatan / Rekam Medis (`MIK` - Gelar `S.Tr.Kes.`)
 - **Pemisahan Peran & Wewenang (RBAC):**
   - **Admin IT / Pusat (`admin_it`):** Akses master konfigurasi 3 prodi, setting sistem, dan filter global scope switcher.
-  - **Admin Program Studi (`admin_prodi`):** Mengelola review proposal TA/Skripsi, plotting dosen pembimbing, penjadwalan sidang, verifikasi berkas bebas tanggungan, dan yudisium khusus prodinya.
+  - **Admin Program Studi (`admin_prodi`):** Mengelola review proposal TA/Skripsi, plotting dosen pembimbing, penjadwalan sidang, verifikasi berkas bebas tanggungan, dan penetapan hasil kelulusan yudisium khusus prodinya.
   - **Dosen Pembimbing & Penguji (`dosen`):** Bimbingan online, logbook catatan, persetujuan (ACC), dan penilaian seminar/sidang.
-  - **Mahasiswa (`mahasiswa`):** Pengajuan judul, logbook bimbingan mandiri, pendaftaran sidang, cetak kartu kendali bimbingan, pendaftaran yudisium, dan cetak SKL resmi.
-- **Kartu Kendali Bimbingan Digital:** Cetak kartu bimbingan siap print/PDF lengkap dengan paraf digital.
-- **Surat Keterangan Lulus (SKL) Digital Ber-QR Code:** Penerbitan SKL ber-token kriptografi.
-- **Public Verification Portal:** Rumah Sakit / Instansi luar dapat memindai QR-Code untuk memverifikasi keaslian kelulusan secara realtime.
+  - **Mahasiswa (`mahasiswa`):** Pengajuan judul, logbook bimbingan mandiri, pendaftaran sidang, cetak kartu kendali bimbingan, pendaftaran yudisium bebas tanggungan, dan pemantauan status kelulusan.
+- **Logbook & Kartu Kendali Bimbingan Digital:** Cetak kartu kendali bimbingan siap print/PDF lengkap dengan paraf digital.
+- **Modul Yudisium Bebas Tanggungan:** Upload bukti bebas perpustakaan, keuangan, laboratorium klinik/phantom, TOEFL, validasi berkas oleh prodi, serta penetapan hasil yudisium (IPK Final, Predikat, & Tanggal Lulus).
 
 ---
 

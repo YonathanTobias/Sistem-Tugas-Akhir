@@ -60,14 +60,14 @@
                 <i class="fa-solid fa-graduation-cap text-3xl"></i>
                 <div>
                     <h3 class="font-extrabold text-base">Selamat! Anda Dinyatakan LULUS YUDISIUM</h3>
-                    <p class="text-xs text-emerald-100">Predikat: <strong>{{ $pendaftaran->predikat }}</strong> &bull; No. SK: <span class="font-mono">{{ $pendaftaran->nomor_sk }}</span></p>
+                    <p class="text-xs text-emerald-100">Predikat: <strong>{{ $pendaftaran->predikat }}</strong> &bull; IPK Final: <strong>{{ number_format($pendaftaran->ipk_final, 2) }}</strong> &bull; Tanggal Lulus: <strong>{{ $pendaftaran->tgl_lulus ? $pendaftaran->tgl_lulus->translatedFormat('d F Y') : '-' }}</strong></p>
                 </div>
             </div>
-            <div class="pt-2">
-                <a href="{{ route('yudisium.cetak-skl', $pendaftaran->id) }}" target="_blank" class="inline-flex items-center px-5 py-2.5 bg-white text-emerald-800 hover:bg-emerald-50 font-bold rounded-xl text-xs shadow transition">
-                    <i class="fa-solid fa-print mr-2"></i> Cetak / Unduh Surat Keterangan Lulus (SKL) Digital
-                </a>
+            @if($pendaftaran->catatan_kelulusan)
+            <div class="p-3 bg-white/10 rounded-xl text-xs backdrop-blur-sm border border-white/20">
+                <strong>Catatan Kelulusan:</strong> {{ $pendaftaran->catatan_kelulusan }}
             </div>
+            @endif
         </div>
         @endif
 

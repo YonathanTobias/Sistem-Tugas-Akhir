@@ -85,16 +85,10 @@
                             @if($p->nomor_sk)
                             <div class="text-[10px] text-slate-400 font-mono mt-0.5">{{ $p->nomor_sk }}</div>
                             @endif
-                        </td>
-                        <td class="px-6 py-4 text-center space-x-2">
-                            <a href="{{ route('yudisium.show', $p->id) }}" class="inline-flex items-center px-3 py-1.5 bg-slate-100 hover:bg-emerald-600 hover:text-white text-slate-700 font-bold rounded-xl text-xs transition">
-                                <i class="fa-solid fa-clipboard-check mr-1.5"></i> Periksa / SK
+                        <td class="px-6 py-4 text-center">
+                            <a href="{{ route('yudisium.show', $p->id) }}" class="inline-flex items-center px-3.5 py-1.5 bg-slate-100 hover:bg-emerald-600 hover:text-white text-slate-700 font-bold rounded-xl text-xs transition shadow-sm">
+                                <i class="fa-solid fa-clipboard-check mr-1.5"></i> Verifikasi Berkas
                             </a>
-                            @if($p->status === 'lulus')
-                            <a href="{{ route('yudisium.cetak-skl', $p->id) }}" target="_blank" class="inline-flex items-center px-2.5 py-1.5 bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white rounded-xl text-xs font-bold transition" title="Cetak SKL">
-                                <i class="fa-solid fa-print"></i>
-                            </a>
-                            @endif
                         </td>
                     </tr>
                     @empty

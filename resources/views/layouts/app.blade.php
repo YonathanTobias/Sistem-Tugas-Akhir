@@ -106,7 +106,7 @@
 
                 <a href="{{ route('yudisium.index') }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all {{ request()->routeIs('yudisium.*') ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/30' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
                     <i class="fa-solid fa-award w-5 mr-3 text-center {{ request()->routeIs('yudisium.*') ? 'text-white' : 'text-slate-400' }}"></i>
-                    <span>Yudisium & SKL</span>
+                    <span>Pendaftaran Yudisium</span>
                 </a>
 
                 <a href="{{ route('pengumuman.index') }}" class="flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all {{ request()->routeIs('pengumuman.*') ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/30' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
